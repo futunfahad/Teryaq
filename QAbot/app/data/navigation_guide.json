@@ -1,0 +1,174 @@
+[
+  {
+    "intent": "order_from_prescriptions",
+    "label": "how_to_order_from_prescriptions",
+    "question_patterns": [
+      "س1",
+      "كيف أطلب دوائي من ترياق",
+      "كيف اطلب دوائي من ترياق",
+      "كيف أطلب دوائي",
+      "كيف اطلب دوائي",
+      "ابي اطلب دوائي",
+      "طلب دوائي",
+      "طلب دواء",
+      "من وين اطلب",
+      "من أين أطلب",
+      "كيف اطلب من الوصفات",
+      "الوصفات الطبية طلب",
+      "how do i order my medicine",
+      "how do i order from prescriptions",
+      "order from prescriptions",
+      "place an order from prescription",
+      "order my medication"
+    ],
+    "response_ar": "من شريط التنقّل اللي تحت، اختر \"الوصفات الطبية\".\nإذا المستشفى كاتب لك وصفة فعّالة، بتظهر لك في القائمة.\nاضغط على زر \"طلب\" عند الوصفة اللي تبيها.\nراجع تفاصيل الطلب، واختر اذا تريد دوائك توصيل او استلام، ثم اضغط \"تأكيد الطلب\".\nبعد التأكيد، يضاف الطلب تلقائيًا إلى صفحة \"الطلبات\" وتقدر تتابعه من هناك.\n\nالمسار:\nالوصفات الطبية > اختيار الوصفة > زر الطلب > تأكيد الطلب > يظهر الطلب في صفحة الطلبات.",
+    "response_en": "From the bottom navigation, open “Prescriptions”.\nIf the hospital added an active prescription, it will appear in the list.\nTap “Order” on the prescription you want.\nReview details, choose Delivery or Pickup, then tap “Confirm Order”.\nAfter confirmation, the order is added automatically to the “Orders” page where you can track it.\n\nPath:\nPrescriptions > Select prescription > Order > Confirm > Appears in Orders."
+  },
+  {
+    "intent": "cancel_order",
+    "label": "how_to_cancel_order",
+    "question_patterns": [
+      "الغاء طلب",
+      "كيف الغي الطلب",
+      "كيف ألغي الطلب",
+      "إلغاء الطلب",
+      "الغاء الطلب",
+      "ابي الغي طلبي",
+      "cancel order",
+      "how to cancel an order",
+      "remove order"
+    ],
+    "response_ar": "من شريط التنقّل اللي تحت، اختر \"الطلبات\".\nيظهر لك قائمة الطلبات مع ثلاث ازرار (تتبع – تقرير – الغاء).\nاذا حصلت على الطلب اللي تريد الغاءه، اضغط \"الغاء\"، ووافق على رسالة التأكيد، وبيتم إلغاء الطلب.\n\nملاحظة:\nتقدر تلغي الطلب فقط قبل ما يتم قبول او رفض الطلب من المستشفى، وغير ذلك التطبيق بيمنعك من الإلغاء.\n\nالمسار:\nالطلبات > زر إلغاء الطلب.",
+    "response_en": "From the bottom navigation, open “Orders”.\nFind the order and tap “Cancel”, then confirm.\nNote: you can cancel only before the hospital accepts or rejects the order; otherwise the app will prevent cancellation.\n\nPath:\nOrders > Cancel."
+  },
+  {
+    "intent": "track_order",
+    "label": "how_to_track_order",
+    "question_patterns": [
+      "س2",
+      "كيف أتتبع الطلب",
+      "كيف اتتبع الطلب",
+      "تتبع الطلب",
+      "وين طلبي",
+      "أين طلبي",
+      "متى يوصل طلبي",
+      "يوصل متى",
+      "كيف اشوف حالة الطلب لايف",
+      "track order",
+      "how do i track the order",
+      "where is my order",
+      "delivery status",
+      "live order status",
+      "order tracking"
+    ],
+    "response_ar": "من شريط التنقّل اللي تحت، اختر \"الطلبات\".\nبتشوف كل طلباتك السابقة والحالية.\nتقدر تستخدم شريط البحث او التصفية فوق عشان توصل للطلب أسرع.\nاضغط على زر \"تتبع\" عشان تشوف خط سير الطلب.\nوإذا حاب تشوف حالة الطلب بشكل مباشر (live) و تفاصيل أكثر عن الطلب، اضغط زر \"عرض\" عشان تروح للوحة تفاصيل الطلب (الداشبورد).\n\nالمسار:\nالطلبات > اختيار الطلب > تتبع الطلب > صفحة التتبع (مع زر عرض للانتقال للداشبورد).",
+    "response_en": "From the bottom navigation, open “Orders”.\nYou will see all your current and previous orders.\nUse Search or Filters to find the order faster.\nTap “Track” to view the route.\nFor live status and more details, tap “View” to open the order dashboard.\n\nPath:\nOrders > Select order > Track > Tracking page (with View to dashboard)."
+  },
+
+  {
+    "intent": "delivery_time_preference",
+    "label": "how_to_set_delivery_time_preference",
+    "question_patterns": [
+      "س4",
+      "هل أقدر أختار وقت توصيل معيّن",
+      "هل اقدر اختار وقت توصيل",
+      "وقت التوصيل",
+      "تفضيل وقت التوصيل",
+      "صباح",
+      "مساء",
+      "delivery time preference",
+      "choose delivery time",
+      "morning or evening delivery",
+      "set delivery preference"
+    ],
+    "response_ar": "نعم، تقدر تحدد تفضيلك لوقت التوصيل (صباح\\مساء).\nبعد ما تسوي الطلب، تروح لصفحة الطلبات ومن خلالها تضغط على زر \"تتبع\".\nاسفل الصفحة بيظهر لك خيار تفضيل وقت التوصيل.\nاختر الوقت اللي يناسبك: صباحًا أو مساءً.\n\nملاحظة مهمة:\nتقدر تختار وقت التوصيل مرّة واحدة فقط عند إنشاء الطلب، وما تقدر تغيّره بعد ما تحفظ اختيارك.\n\nالمسار:\nالطلبات > اختيار الطلب > تتبع > اختيار تفضيل وقت التوصيل (صباح / مساء).",
+    "response_en": "Yes, you can set a delivery time preference (Morning/Evening).\nAfter placing the order, go to Orders and tap “Track”.\nAt the bottom, you will see the delivery time preference option.\nChoose Morning or Evening.\n\nImportant note:\nYou can set it only once when creating the order and you can’t change it after saving.\n\nPath:\nOrders > Select order > Track > Delivery time preference (Morning/Evening)."
+  },
+  {
+    "intent": "order_without_prescription",
+    "label": "can_i_order_without_prescription",
+    "question_patterns": [
+      "س5",
+      "هل أقدر أطلب دواء بدون وصفة طبية",
+      "هل اقدر اطلب بدون وصفة",
+      "بدون وصفة",
+      "بدون وصفه",
+      "order without prescription",
+      "can i order without prescription",
+      "without prescription"
+    ],
+    "response_ar": "لا، لازم تكون عندك وصفة طبية فعّالة مسجلة من المستشفى في النظام عشان تقدر تطلب الدواء عن طريق ترياق.",
+    "response_en": "No. You must have an active prescription recorded by the hospital in the system to order medication through Teryaq."
+  },
+  {
+    "intent": "order_status_meanings",
+    "label": "order_status_meanings",
+    "question_patterns": [
+      "س6",
+      "كيف أعرف حالة طلبي وماذا تعني",
+      "كيف اعرف حالة طلبي",
+      "حالات الطلب",
+      "معنى حالة الطلب",
+      "وش معنى قيد الانتظار",
+      "وش معنى مقبول",
+      "order status meanings",
+      "what does order status mean",
+      "what does pending mean",
+      "status meaning"
+    ],
+    "response_ar": "من صفحة \"الطلبات\" تشوف حالة كل طلب، مثل:\nقيد الانتظار: الطلب تحت مراجعة المستشفى.\nقيد التوصيل: طلبك في طريقه لك.\nتم التوصيل: تم توصيل الدواء بنجاح.\nمرفوض: ما تم قبول الطلب من المستشفى.\nمقبول: تم قبول الطلب من المستشفى وجاري تحضيره.\nفشل التوصيل: ما تمت عملية التوصيل لسبب طارئ.",
+    "response_en": "From the “Orders” page, you can see each order status, such as:\nPending: under hospital review.\nOn Delivery: on the way to you.\nDelivered: delivered successfully.\nRejected: not accepted by the hospital.\nAccepted: accepted and being prepared.\nDelivery Failed: delivery could not be completed due to an issue."
+  },
+  {
+    "intent": "change_address",
+    "label": "how_to_change_delivery_address",
+    "question_patterns": [
+      "س7",
+      "كيف اغيّر عنوان التوصيل",
+      "كيف اغير عنوان التوصيل",
+      "تغيير العنوان",
+      "عنوان التوصيل",
+      "ابي اعدل العنوان",
+      "change delivery address",
+      "update address",
+      "change address"
+    ],
+    "response_ar": "ادخل على \"الملف الشخصي\" من شريط التنقل.\nاسفل الصفحة بتشوف جزئية \"العنوان و المستشفى الرئيسي\".\nاضغط السهم بجانب \"العنوان\".\nبتظهر لك الخريطة ومن خلالها تقدر تعدل على العناوين وتشوف العناوين المحفوظة من قبل.",
+    "response_en": "Open “Profile” from the bottom navigation.\nAt the bottom, go to “Address & Main Hospital”.\nTap the arrow next to “Address”.\nA map will open where you can edit the address and view previously saved addresses."
+  },
+  {
+    "intent": "change_language",
+    "label": "how_to_change_app_language",
+    "question_patterns": [
+      "س8",
+      "كيف اغيّر لغة التطبيق",
+      "كيف اغير لغة التطبيق",
+      "تغيير اللغة",
+      "لغة التطبيق",
+      "ابي اغير اللغة",
+      "change app language",
+      "switch language",
+      "change language"
+    ],
+    "response_ar": "افتح قائمة ترياق من أيقونة الثلاث خطوط، ثم اختر ايقونة اللغة، ومنها تقدر تتنقل بين العربي و الإنجليزي.",
+    "response_en": "Open the Teryaq menu (three lines icon), tap the language icon, then switch between Arabic and English."
+  },
+  {
+    "intent": "view_notifications",
+    "label": "how_to_view_notifications",
+    "question_patterns": [
+      "س9",
+      "كيف أقدر أشوف اشعارات ترياق",
+      "كيف اشوف الاشعارات",
+      "اشعارات ترياق",
+      "الإشعارات",
+      "عرض الكل اشعارات",
+      "view notifications",
+      "how do i see notifications",
+      "open notifications",
+      "view all notifications"
+    ],
+    "response_ar": "من الصفحة الرئيسية يظهر لك الاشعارات وتقدر تضغط \"عرض الكل\" وتفتح لك صفحة الاشعارات كاملة.\n\nالمسار:\nالصفحة الرئيسية > بطاقة الاشعارات > عرض الكل.",
+    "response_en": "On the Home page, you will see the notifications.\nTap “View All” to open the full notifications page.\n\nPath:\nHome > Notifications card > View All."
+  }
+]

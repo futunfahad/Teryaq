@@ -1,0 +1,8 @@
+add risk level , and  id for patient 
+genrate fake data if temp_sensitive=True or  spoil_fast=True make it  "High"  auto
+
+#how run it 
+
+docker-compose down -v --remove-orphans
+docker-compose build
+docker-compose up -d

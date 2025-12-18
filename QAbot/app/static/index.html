@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>💊 GradU Chatbot</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="chat-box">
+      <div id="messages"></div>
+      <div id="input-area">
+        <input id="user-input" type="text" placeholder="Type your message..." />
+        <button id="send-btn">Send</button>
+      </div>
+    </div>
+
+    <script>
+      const input = document.getElementById("user-input");
+      const sendBtn = document.getElementById("send-btn");
+      const messages = document.getElementById("messages");
+
+      let history = [];
+
+      function append(role, text) {
+        const div = document.createElement("div");
+        div.className = role;
+        div.textContent = text;
+        messages.appendChild(div);
+        messages.scrollTop = messages.scrollHeight;
+      }
+
+      async function send() {
+        const msg = input.value.trim();
+        if (!msg) return;
+        append("user", "👤 " + msg);
+        input.value = "";
+        append("bot", "🤖 ");
+
+        const resp = await fetch("/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: msg, history: history }),
+        });
+
+        if (resp.headers.get("content-type")?.includes("text/plain")) {
+          const reader = resp.body.getReader();
+          let decoder = new TextDecoder();
+          let botText = "";
+          while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+            const chunk = decoder.decode(value, { stream: true });
+            botText += chunk;
+            messages.lastChild.textContent = "🤖 " + botText;
+            messages.scrollTop = messages.scrollHeight;
+          }
+          history.push([msg, botText]);
+        } else {
+          const data = await resp.json();
+          messages.lastChild.textContent = "🤖 " + data.response;
+          history.push([msg, data.response]);
+        }
+      }
+
+      sendBtn.onclick = send;
+      input.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") send();
+      });
+    </script>
+  </body>
+</html>

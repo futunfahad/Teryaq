@@ -1,0 +1,72 @@
+version: "3.9"
+
+services:
+  # ========================
+  # 🚗 OSRM (Routing Engine)
+  # ========================
+  osrm:
+    image: osrm/osrm-backend
+    container_name: osrm_backend
+    command: osrm-routed --algorithm mld /data/saudi-arabia-latest.osrm
+    volumes:
+      - ./flutter_application_1/osrm-data:/data
+    expose:
+      - "5000" # internal only
+    restart: unless-stopped
+
+  # ========================
+  # 🗺️ TileServer GL (Map Tiles)
+  # ========================
+  tileserver:
+    image: maptiler/tileserver-gl
+    container_name: tileserver_gl
+    command: ["--mbtiles", "/data/saudimap.mbtiles", "--port", "2000"]
+    volumes:
+      - ./flutter_application_1/osrm-data:/data
+    expose:
+      - "2000" # internal only
+    depends_on:
+      - osrm
+    restart: unless-stopped
+
+  # ========================
+  # ⚙️ VRP Backend (FastAPI)
+  # ========================
+  backend:
+    build:
+      context: ./vrp-backend
+      dockerfile: Dockerfile
+    container_name: vrp_backend
+    volumes:
+      - ./vrp-backend:/app
+    expose:
+      - "9000" # internal only
+    env_file:
+      - ./vrp-backend/.env
+    depends_on:
+      osrm:
+        condition: service_started
+      tileserver:
+        condition: service_started
+    restart: unless-stopped
+
+  # ========================
+  # 🌐 PYTHON GATEWAY PROXY (FINAL)
+  # ========================
+  gateway:
+    build:
+      context: ./proxy_gateway
+      dockerfile: Dockerfile
+    container_name: proxy_gateway
+    ports:
+      - "8088:8088"
+
+    # 🔥 THIS LINE MAKES IT AUTO-UPDATE
+    volumes:
+      - ./proxy_gateway:/app
+
+    depends_on:
+      - backend
+      - osrm
+      - tileserver
+    restart: unless-stopped

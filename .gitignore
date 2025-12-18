@@ -1,0 +1,69 @@
+# -------------------------
+# OS / Editor junk
+# -------------------------
+.DS_Store
+Thumbs.db
+
+# -------------------------
+# Flutter / Dart (generated)
+# -------------------------
+**/.dart_tool/
+**/.flutter-plugins-dependencies
+**/build/
+
+# -------------------------
+# Android caches
+# -------------------------
+**/.gradle/
+**/.kotlin/
+
+# -------------------------
+# iOS / macOS generated
+# -------------------------
+**/Flutter/ephemeral/
+**/flutter_export_environment.sh
+
+# -------------------------
+# Python
+# -------------------------
+**/__pycache__/
+
+# -------------------------
+# Machine-specific
+# -------------------------
+**/local.properties
+
+# -------------------------
+# IDE
+# -------------------------
+**/.idea/
+
+# -------------------------
+# Secrets ONLY (non-negotiable)
+# -------------------------
+**/secrets/
+**/serviceAccountKey.json
+**/google-services.json
+**/GoogleService-Info.plist
+.env
+
+
+# OSRM / Map data (DO NOT COMMIT)
+**/osrm-data/
+*.mbtiles
+*.pbf
+*.osrm*
+planetiler.jar
+
+# Build / generated
+**/build/
+**/.dart_tool/
+**/.flutter-plugins*
+**/.gradle/
+**/.kotlin/
+**/ephemeral/
+
+# OS / IDE
+.DS_Store
+.idea/
+.vscode/

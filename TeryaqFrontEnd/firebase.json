@@ -1,0 +1,41 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "teryaq-demo-project",
+          "appId": "1:123456789000:android:aaaaaaaaaaaaaaaaaaaaaa",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "ios": {
+        "default": {
+          "projectId": "teryaq-demo-project",
+          "appId": "1:123456789000:ios:bbbbbbbbbbbbbbbbbbbbbb",
+          "uploadDebugSymbols": false,
+          "fileOutput": "ios/Runner/GoogleService-Info.plist"
+        }
+      },
+      "macos": {
+        "default": {
+          "projectId": "teryaq-demo-project",
+          "appId": "1:123456789000:macos:cccccccccccccccccccccc",
+          "uploadDebugSymbols": false,
+          "fileOutput": "macos/Runner/GoogleService-Info.plist"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "teryaq-demo-project",
+          "configurations": {
+            "android": "1:123456789000:android:aaaaaaaaaaaaaaaaaaaaaa",
+            "ios": "1:123456789000:ios:bbbbbbbbbbbbbbbbbbbbbb",
+            "macos": "1:123456789000:macos:cccccccccccccccccccccc",
+            "web": "1:123456789000:web:dddddddddddddddddddddd",
+            "windows": "1:123456789000:web:eeeeeeeeeeeeeeeeeeeeee"
+          }
+        }
+      }
+    }
+  }
+}

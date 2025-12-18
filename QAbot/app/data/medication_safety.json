@@ -1,0 +1,154 @@
+[
+  {
+    "medication": "insulin",
+    "display_name_en": "Insulin (pens or vials)",
+    "display_name_ar": "الإنسولين (أقلام أو قوارير)",
+    "keywords": ["insulin", "أنسولين", "الأنسولين"],
+    "unsafe_signs": ["clumpy", "frozen", "discolored", "expired"],
+    "safe_signs": ["clear"],
+    "summary_ar": "الإنسولين يكون غير آمن إذا كان متكتلًا أو مجمدًا أو متغير اللون أو منتهي الصلاحية. الإنسولين الشفاف السائل عادةً علامة مطمئنة.",
+    "summary_en": "Insulin is unsafe if clumpy, frozen, discolored, or expired. Clear liquid insulin is usually a reassuring sign.",
+    "enforce_color_policy": true,
+    "allowed_color_terms_en": ["clear", "transparent", "colorless"],
+    "allowed_color_terms_ar": [
+      "شفاف",
+      "صافي",
+      "سائل صاف",
+      "لا لون له",
+      "عديم اللون"
+    ],
+    "if_unsafe_ar": "لا تستخدمه. تخلّص منه بطريقة آمنة، وتواصل مع الصيدلي/الطبيب للحصول على بديل.",
+    "if_unsafe_en": "Do not use it. Dispose of it safely and contact your pharmacist/doctor for a replacement.",
+    "if_unclear_ar": "إذا كنت غير متأكد من العلامات أو كانت المعلومة ناقصة، لا تستخدمه قبل التأكد من مختص.",
+    "if_unclear_en": "If you’re not sure or the details are unclear, don’t use it until you confirm with a healthcare professional.",
+    "clarifying_questions_ar": [
+      "هل الإنسولين متكتل أو فيه رواسب؟",
+      "هل كان مجمدًا أو تعرض لثلج؟",
+      "هل تغير اللون عن المعتاد؟",
+      "هل تاريخ الصلاحية منتهي؟"
+    ],
+    "clarifying_questions_en": [
+      "Is it clumpy or does it have particles/sediment?",
+      "Was it frozen or exposed to ice/freezing?",
+      "Has the color changed from usual?",
+      "Is it expired?"
+    ]
+  },
+  {
+    "medication": "antibiotic syrup",
+    "display_name_en": "Antibiotic syrup (e.g., Amoxicillin suspension)",
+    "display_name_ar": "شراب مضاد حيوي (مثل أموكسيسيلين)",
+    "keywords": [
+      "antibiotic",
+      "syrup",
+      "شراب",
+      "شراب مضاد",
+      "شراب المضاد",
+      "amoxicillin",
+      "augmentin",
+      "أموكسيسيلين",
+      "أوقمنتين"
+    ],
+    "unsafe_signs": ["bad_smell", "thickened", "discolored", "expired"],
+    "safe_signs": ["normal_smell", "clear_or_normal"],
+    "summary_ar": "شراب المضاد الحيوي قد يفسد إذا تغيرت رائحته أو لونه أو أصبح سميكًا/لزجًا بشكل غير معتاد أو انتهت صلاحيته.",
+    "summary_en": "Antibiotic syrup may be spoiled if its smell or color changes, it becomes unusually thick, or it is expired.",
+    "enforce_color_policy": false,
+    "if_unsafe_ar": "لا تستخدمه. تواصل مع الصيدلي/الطبيب لاستبداله، خصوصًا إذا كانت الرائحة سيئة أو القوام تغيّر.",
+    "if_unsafe_en": "Do not use it. Contact your pharmacist/doctor for a replacement, especially if smell is bad or texture changed.",
+    "if_unclear_ar": "إذا الوصف غير واضح (فقط “غريب”)، اذكر هل المشكلة في اللون أو الرائحة أو القوام أو الصلاحية.",
+    "if_unclear_en": "If it’s just described as “weird”, tell me whether the issue is color, smell, texture, or expiry.",
+    "clarifying_questions_ar": [
+      "هل الرائحة سيئة أو غريبة؟",
+      "هل القوام صار سميك/لزج أكثر من المعتاد؟",
+      "هل تغير اللون؟",
+      "هل منتهي الصلاحية؟"
+    ],
+    "clarifying_questions_en": [
+      "Does it smell bad or unusual?",
+      "Has the texture become thicker/stickier than usual?",
+      "Has the color changed?",
+      "Is it expired?"
+    ]
+  },
+  {
+    "medication": "cough syrup",
+    "display_name_en": "Cough syrup (adult or child)",
+    "display_name_ar": "شراب الكحة (للكبار أو الأطفال)",
+    "keywords": [
+      "cough",
+      "cough syrup",
+      "سعال",
+      "كحة",
+      "شراب كحه",
+      "شراب كحة",
+      "شراب سعال"
+    ],
+    "unsafe_signs": [
+      "fermented",
+      "smell_alcohol",
+      "expired",
+      "bad_smell",
+      "discolored"
+    ],
+    "safe_signs": ["normal"],
+    "summary_ar": "شراب الكحة قد يفسد إذا ظهرت رغوة/فقاعات بشكل غير طبيعي، أو ظهرت رائحة كحول/رائحة سيئة، أو تغير اللون، أو انتهت الصلاحية.",
+    "summary_en": "Cough syrup may be spoiled if it becomes foamy/bubbly, smells like alcohol or bad, changes color, or is expired.",
+    "enforce_color_policy": false,
+    "if_unsafe_ar": "لا تستخدمه. تخلّص منه وتواصل مع الصيدلي لاستبداله، خصوصًا إذا فيه رغوة أو رائحة كحول.",
+    "if_unsafe_en": "Do not use it. Dispose of it and contact a pharmacist for a replacement, especially if foamy or smells like alcohol.",
+    "if_unclear_ar": "اذكر هل المشكلة: رغوة/فقاعات؟ رائحة كحول؟ تغير لون؟ أو تاريخ انتهى؟",
+    "if_unclear_en": "Tell me if the issue is: foam/bubbles, alcohol smell, color change, or expiry.",
+    "clarifying_questions_ar": [
+      "هل فيه رغوة أو فقاعات؟",
+      "هل فيه رائحة كحول أو رائحة سيئة؟",
+      "هل تغير اللون؟",
+      "هل منتهي الصلاحية؟"
+    ],
+    "clarifying_questions_en": [
+      "Is it foamy or bubbly?",
+      "Does it smell like alcohol or smell bad?",
+      "Has the color changed?",
+      "Is it expired?"
+    ]
+  },
+  {
+    "medication": "pain relief tablet",
+    "display_name_en": "Pain relief tablets (e.g., Paracetamol/Ibuprofen)",
+    "display_name_ar": "مسكنات الألم (مثل باراسيتامول/بروفين)",
+    "keywords": [
+      "painkiller",
+      "pain relief",
+      "مسكن",
+      "حبوب",
+      "مسكن ألم",
+      "paracetamol",
+      "panadol",
+      "ibuprofen",
+      "brufen",
+      "ادفيل",
+      "بانادول",
+      "بروفين",
+      "فيفادول"
+    ],
+    "unsafe_signs": ["moist", "cracked", "expired"],
+    "safe_signs": ["dry_intact"],
+    "summary_ar": "أقراص المسكن تكون غير آمنة إذا كانت رطبة/لزجة أو متشققة/مفتتة أو منتهية الصلاحية. إذا كانت جافة وصلبة وسليمة فذلك مطمئن.",
+    "summary_en": "Pain tablets are unsafe if moist/sticky, cracked/crumbly, or expired. Dry, solid, intact tablets are reassuring.",
+    "enforce_color_policy": false,
+    "if_unsafe_ar": "لا تستخدمها. تخلّص منها واستبدلها، خاصة إذا كانت رطبة أو مفتتة.",
+    "if_unsafe_en": "Do not use them. Dispose and replace them, especially if wet or crumbling.",
+    "if_unclear_ar": "اذكر: هل هي رطبة؟ هل هي مشققة/مفتتة؟ وهل تاريخ الانتهاء صحيح؟",
+    "if_unclear_en": "Tell me: are they moist, cracked/crumbly, and what is the expiry status?",
+    "clarifying_questions_ar": [
+      "هل الحبوب رطبة أو لزجة؟",
+      "هل هي مشققة أو تتفتت؟",
+      "هل منتهية الصلاحية؟"
+    ],
+    "clarifying_questions_en": [
+      "Are the tablets moist or sticky?",
+      "Are they cracked or crumbling?",
+      "Are they expired?"
+    ]
+  }
+]

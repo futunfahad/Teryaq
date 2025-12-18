@@ -1,0 +1,157 @@
+[
+  {
+    "medication_en": "Insulin (pens or vials)",
+    "medication_ar": "الإنسولين (أقلام أو قوارير)",
+    "also_known_as_en": [
+      "NovoRapid",
+      "Humalog",
+      "Lantus",
+      "Tresiba",
+      "NPH insulin"
+    ],
+    "also_known_as_ar": [
+      "أنسولين",
+      "قلم السكر",
+      "أنسولين لانتوس",
+      "هومالوج",
+      "نوفورابيد"
+    ],
+    "storage": "Keep refrigerated at 2–8°C. Do NOT freeze. Once opened, may stay at room temperature (below 25°C) for up to 28 days depending on the brand.",
+    "can_return_to_fridge": true,
+    "notes_ar": "يُحفظ بالثلاجة بين ٢ و٨ درجات مئوية. لا يُجمّد. بعد الفتح يمكن حفظه بحرارة الغرفة (تحت ٢٥°) حسب النوع."
+  },
+  {
+    "medication_en": "Eye drops",
+    "medication_ar": "قطرات العين",
+    "also_known_as_en": [
+      "Lubricant drops",
+      "Artificial tears",
+      "Antibiotic drops"
+    ],
+    "also_known_as_ar": ["قطرة عين", "دموع صناعية", "قطرة مضاد", "قطرة مرطبة"],
+    "storage": "Store at room temperature (below 25°C). Some antibiotic or preservative-free drops may require refrigeration before opening.",
+    "can_return_to_fridge": true,
+    "notes_ar": "تُحفظ بدرجة الغرفة (أقل من ٢٥°). بعض القطرات تحتاج تبريد قبل الفتح حسب النشرة."
+  },
+  {
+    "medication_en": "Cough syrup (adult or child)",
+    "medication_ar": "شراب الكحة",
+    "also_known_as_en": ["Cough mixture", "Expectorant", "Antitussive syrup"],
+    "also_known_as_ar": ["شراب سعال", "شراب كحة للأطفال", "شراب طارد للبلغم"],
+    "storage": "Keep tightly closed at room temperature (below 25°C). Some antibiotic syrups must be refrigerated after reconstitution.",
+    "can_return_to_fridge": true,
+    "notes_ar": "يُغلق بإحكام ويُحفظ بحرارة الغرفة. بعض المضادات السائلة تحتاج تبريد بعد التحضير."
+  },
+  {
+    "medication_en": "Antibiotic syrup (e.g., Amoxicillin suspension)",
+    "medication_ar": "شراب مضاد حيوي (مثل أموكسيسيلين)",
+    "also_known_as_en": ["Amoxicillin suspension", "Augmentin syrup"],
+    "also_known_as_ar": ["شراب أموكسيل", "شراب أوقمنتين", "شراب مضاد"],
+    "storage": "Refrigerate after mixing (2–8°C). Do not freeze. Discard after 7–14 days depending on product label.",
+    "can_return_to_fridge": true,
+    "notes_ar": "يُحفظ في الثلاجة بعد التحضير (٢–٨°) ويُتلف بعد أسبوع أو أسبوعين حسب النشرة."
+  },
+  {
+    "medication_en": "Pain relief tablets",
+    "medication_ar": "مسكنات الألم",
+    "also_known_as_en": ["Panadol", "Paracetamol", "Brufen", "Advil"],
+    "also_known_as_ar": ["بانادول", "فيفادول", "بروفين", "ادفيل", "مسكن"],
+    "storage": "Store in a dry place at room temperature (20–25°C). Avoid moisture and direct sunlight.",
+    "can_return_to_fridge": false,
+    "notes_ar": "تُحفظ في مكان جاف بدرجة الغرفة بعيدًا عن الشمس والرطوبة."
+  },
+  {
+    "medication_en": "Topical cream or ointment",
+    "medication_ar": "الكريمات والمراهم",
+    "also_known_as_en": [
+      "Skin cream",
+      "Antibiotic ointment",
+      "Hydrocortisone cream",
+      "Moisturizing cream"
+    ],
+    "also_known_as_ar": ["كريم", "مرهم", "كريم مطهر", "مرهم مضاد", "مرطب"],
+    "storage": "Room temperature (below 25°C), away from direct heat or sunlight. Do not refrigerate unless stated.",
+    "can_return_to_fridge": false,
+    "notes_ar": "تُحفظ بدرجة الغرفة بعيدًا عن الحرارة. لا تُبرد إلا إذا أوصت النشرة بذلك."
+  },
+  {
+    "medication_en": "Asthma inhaler (puffer)",
+    "medication_ar": "بخاخ الربو",
+    "also_known_as_en": [
+      "Ventolin",
+      "Salbutamol inhaler",
+      "Seretide",
+      "Symbicort"
+    ],
+    "also_known_as_ar": [
+      "بخاخ فنتولين",
+      "بخاخ سالبيوتامول",
+      "بخاخ سيريتايد",
+      "بخاخ سيمبيكورت"
+    ],
+    "storage": "Store below 30°C, away from direct sunlight and flames. Do not freeze or pierce the canister.",
+    "can_return_to_fridge": false,
+    "notes_ar": "يُحفظ أقل من ٣٠°. يُبعد عن الحرارة أو اللهب. لا يُجمّد ولا يُثقب."
+  },
+  {
+    "medication_en": "Nasal spray",
+    "medication_ar": "بخاخ الأنف",
+    "also_known_as_en": ["Fluticasone", "Otrivin", "Saline spray"],
+    "also_known_as_ar": ["بخاخ فليكسونيز", "أوتريفين", "بخاخ ملحي"],
+    "storage": "Room temperature (below 25°C). Keep nozzle clean and cap tightly after use.",
+    "can_return_to_fridge": false,
+    "notes_ar": "تُحفظ بدرجة الغرفة ويُغلق الغطاء جيدًا بعد الاستعمال."
+  },
+  {
+    "medication_en": "Antiseptic solution",
+    "medication_ar": "المطهرات السائلة",
+    "also_known_as_en": ["Betadine", "Dettol", "Savlon", "Chlorhexidine"],
+    "also_known_as_ar": ["بيتادين", "ديتول", "سافلون", "كلورهكسيدين"],
+    "storage": "Store at room temperature (below 30°C), tightly closed. Avoid direct sunlight.",
+    "can_return_to_fridge": false,
+    "notes_ar": "تُحفظ بدرجة الغرفة بإحكام بعيدًا عن الشمس."
+  },
+  {
+    "medication_en": "Eye ointment",
+    "medication_ar": "مرهم العين",
+    "also_known_as_en": [
+      "Chloramphenicol eye ointment",
+      "Antibiotic eye ointment"
+    ],
+    "also_known_as_ar": ["مرهم مضاد حيوي للعين", "مرهم كلورامفينيكول"],
+    "storage": "Room temperature (below 25°C). Some brands require refrigeration before opening.",
+    "can_return_to_fridge": true,
+    "notes_ar": "تُحفظ بدرجة الغرفة، وبعض الأنواع تحتاج تبريد قبل الفتح."
+  },
+  {
+    "medication_en": "Ear drops",
+    "medication_ar": "قطرات الأذن",
+    "also_known_as_en": ["Antibiotic ear drops", "Wax remover drops"],
+    "also_known_as_ar": ["قطرة أذن", "قطرة شمع", "قطرة مضاد أذن"],
+    "storage": "Room temperature (below 25°C). Some antibiotic ear drops may require refrigeration.",
+    "can_return_to_fridge": true,
+    "notes_ar": "تُحفظ بدرجة الغرفة، وبعضها يحتاج تبريد حسب النشرة."
+  },
+  {
+    "medication_en": "Vitamin syrup",
+    "medication_ar": "شراب الفيتامينات",
+    "also_known_as_en": ["Multivitamin syrup", "Ferrosanol syrup"],
+    "also_known_as_ar": [
+      "فيتامينات للأطفال",
+      "شراب الحديد",
+      "شراب الفيتامينات"
+    ],
+    "storage": "Room temperature (below 25°C). Shake well before use.",
+    "can_return_to_fridge": false,
+    "notes_ar": "تُحفظ بدرجة الغرفة ويُرج قبل الاستخدام."
+  },
+  {
+    "medication_en": "Hydrogen peroxide (antiseptic)",
+    "medication_ar": "بيروكسيد الهيدروجين (مطهر)",
+    "also_known_as_en": ["Hydrogen peroxide 3%", "H2O2 solution"],
+    "also_known_as_ar": ["بيروكسيد", "مطهر للجروح"],
+    "storage": "Keep tightly closed in a cool, dark place (below 25°C).",
+    "can_return_to_fridge": false,
+    "notes_ar": "تُحفظ العبوة مغلقة في مكان بارد ومظلم."
+  }
+]

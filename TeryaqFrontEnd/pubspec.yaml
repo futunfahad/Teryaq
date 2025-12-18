@@ -1,0 +1,85 @@
+name: teryagapptry
+description: "A new Flutter project."
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  dio: ^5.3.2
+  path_provider: ^2.1.2
+  open_filex: ^4.3.2
+  pdf: ^3.10.4
+  printing: ^5.11.0
+  dropdown_search: ^5.0.6
+  # UI & icons
+  flutter_screenutil: ^5.9.0
+  flutter_svg: ^2.0.9
+  cupertino_icons: ^1.0.8
+
+  # Maps
+  google_maps_flutter: ^2.7.0
+  geocoding: ^2.1.0
+  geolocator: ^13.0.1
+
+  # Storage + Localization + Toast
+  shared_preferences: ^2.3.2
+  easy_localization: ^3.0.5
+  fluttertoast: ^8.2.5
+
+  # Firebase
+  firebase_core: ^4.1.1
+  firebase_auth: ^6.1.0
+
+  # Backend
+  http: ^1.5.0
+
+  flutter_map: ^7.0.0
+  latlong2: ^0.9.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    # Images
+    - assets/firstpage.png
+    - assets/tglogo.png
+    - assets/Securityicon.png
+    - assets/backgroundpic-home.png
+    - assets/TeryagLogo.png
+    - assets/Locationpin.png
+    - assets/car.png
+
+    # Icons
+    - assets/icons/home.svg
+    - assets/icons/order.svg
+    - assets/icons/prescription.svg
+    - assets/icons/profile.svg
+    - assets/icons/delivered.svg
+    - assets/icons/on delivery.svg
+    - assets/icons/accepted.svg
+    - assets/icons/question.svg
+    - assets/icons/rejected.svg
+    - assets/icons/notification.svg
+    - assets/icons/otp.svg
+    - assets/icons/tick.png
+    - assets/icons/truck.svg
+    - assets/icons/CapsuleandPill.svg
+
+    # Localization files
+    - lib/l10n/en.json
+    - lib/l10n/ar.json
+
+    #مدري وش بس انحذفت مع ملفات مزن
+    - assets/firstpage.png
+    - assets/backgroundpic-home.png
+    - lib/l10n/

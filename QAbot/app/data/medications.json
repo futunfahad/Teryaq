@@ -1,0 +1,1343 @@
+[
+  {
+    "id": "insulin",
+    "display_name_en": "Insulin",
+    "display_name_ar": "الإنسولين",
+    "keywords": [
+      "insulin",
+      "انسولين",
+      "أنسولين",
+      "الأنسولين",
+      "قلم السكر",
+      "قلم انسولين",
+      "قلم الإنسولين",
+      "NovoRapid",
+      "Humalog",
+      "Lantus",
+      "Tresiba",
+      "NPH insulin",
+      "نوفورابيد",
+      "هومالوج",
+      "لانتوس",
+      "تريسيبا",
+      "NPH",
+      "basal insulin",
+      "rapid insulin",
+      "قلم السكر",
+      "حقن انسولين",
+      "حقنة انسولين"
+    ],
+    "intent_patterns": {
+      "storage": [
+        "كيف اخزن",
+        "كيف أحفظ",
+        "كيف احفظ",
+        "كيف ابرد",
+        "كيف أبرد",
+        "تبريد",
+        "تخزين",
+        "حفظ",
+        "في الثلاجة",
+        "ثلاجة",
+        "درجة حرارة",
+        "هل ينحط بالثلاجة",
+        "ارجعه للثلاجة",
+        "ارجعه للثلاجه",
+        "كيف اخليه بارد",
+        "how to store",
+        "how to keep",
+        "how to refrigerate",
+        "storage",
+        "fridge",
+        "refrigerator",
+        "temperature",
+        "room temperature",
+        "can i put it back in the fridge"
+      ],
+      "safety": [
+        "غير آمن",
+        "غير امن",
+        "خربان",
+        "فاسد",
+        "منتهي",
+        "انتهت الصلاحية",
+        "متكتل",
+        "رواسب",
+        "شوائب",
+        "مجمد",
+        "تجمد",
+        "ثلج",
+        "تغير اللون",
+        "متغير اللون",
+        "مصفر",
+        "غامق",
+        "تركته في الشمس",
+        "تركته في السيارة",
+        "تعرض لحرارة",
+        "unsafe",
+        "not safe",
+        "spoiled",
+        "expired",
+        "clumpy",
+        "particles",
+        "sediment",
+        "frozen",
+        "discolored",
+        "left in heat",
+        "left in car",
+        "overheated"
+      ],
+      "safety_explain": [
+        "علامات فساد الإنسولين",
+        "علامات عدم صلاحية الإنسولين",
+        "كيف اعرف الانسولين خربان",
+        "كيف أعرف الإنسولين خربان",
+        "متى يكون الإنسولين غير آمن",
+        "what are unsafe signs",
+        "unsafe signs of insulin",
+        "how to tell if insulin is bad",
+        "how do i know if insulin is spoiled"
+      ]
+    },
+    "storage": {
+      "temp_c": { "min": 2, "max": 8 },
+      "room_temp_max_c": 30,
+      "opened_days_hint": 28,
+      "notes_en": "Keep refrigerated at 2–8°C. Do NOT freeze. Once opened, some brands can stay at room temperature (usually below 25–30°C) for a limited time (often around 28 days). Check your product leaflet.",
+      "notes_ar": "يُحفظ بالثلاجة بين ٢ و٨ درجات مئوية. لا يُجمّد. بعد الفتح بعض الأنواع يمكن حفظها بدرجة الغرفة (عادةً أقل من ٢٥–٣٠°) لمدة محدودة (غالبًا قرابة ٢٨ يومًا). راجع النشرة الخاصة بنوعك.",
+      "can_return_to_fridge": true,
+      "tags": ["refrigerated", "temperature_sensitive"],
+      "quick_facts_en": [
+        "Fridge: 2–8°C",
+        "Do not freeze",
+        "Avoid heat/sunlight",
+        "After opening: often ~28 days (brand-dependent)"
+      ],
+      "quick_facts_ar": [
+        "الثلاجة: ٢–٨°",
+        "لا يُجمّد",
+        "تجنب الحرارة/الشمس",
+        "بعد الفتح: غالبًا ~٢٨ يوم (حسب النوع)"
+      ]
+    },
+    "safety": {
+      "unsafe_signs": [
+        "clumpy",
+        "frozen",
+        "discolored",
+        "expired",
+        "overheated",
+        "not_refrigerated"
+      ],
+      "safe_signs": ["clear"],
+      "summary_en": "Insulin is unsafe if it is clumpy/has particles, frozen, discolored, expired, or clearly exposed to damaging heat/freezing.",
+      "summary_ar": "الإنسولين يكون غير آمن إذا كان متكتلًا/فيه رواسب، أو مجمدًا، أو متغير اللون، أو منتهي الصلاحية، أو تعرض لحرارة/تجمّد بشكل واضح.",
+      "enforce_color_policy": true,
+      "allowed_color_terms_en": ["clear", "transparent", "colorless"],
+      "allowed_color_terms_ar": [
+        "شفاف",
+        "صافي",
+        "لا لون له",
+        "عديم اللون",
+        "سائل صاف"
+      ],
+      "if_unsafe_en": "Do not use it. Dispose of it safely and contact your pharmacist/doctor for a replacement.",
+      "if_unsafe_ar": "لا تستخدمه. تخلّص منه بطريقة آمنة وتواصل مع الصيدلي/الطبيب للحصول على بديل.",
+      "if_unclear_en": "If details are unclear (or there was heat/freezing exposure), don’t use it until confirmed by a healthcare professional.",
+      "if_unclear_ar": "إذا التفاصيل غير واضحة (أو كان هناك تعرض لحرارة/تجمّد)، لا تستخدمه قبل التأكد من مختص.",
+      "clarifying_questions_en": [
+        "Is it clumpy or does it have particles/sediment?",
+        "Was it frozen or exposed to ice/freezing?",
+        "Did the color change from its usual appearance?",
+        "Was it left in heat/sunlight (e.g., car) or outside refrigeration for a long time?",
+        "Is it expired?"
+      ],
+      "clarifying_questions_ar": [
+        "هل الإنسولين متكتل أو فيه رواسب؟",
+        "هل كان مجمدًا أو تعرض لثلج/تجمّد؟",
+        "هل تغير اللون عن المعتاد؟",
+        "هل تُرك في حرارة/شمس (مثل السيارة) أو خارج التبريد فترة طويلة؟",
+        "هل منتهي الصلاحية؟"
+      ]
+    }
+  },
+  {
+    "id": "eye_drops",
+    "display_name_en": "Eye drops",
+    "display_name_ar": "قطرات العين",
+    "keywords": [
+      "eye drops",
+      "drops",
+      "artificial tears",
+      "lubricant drops",
+      "antibiotic drops",
+      "preservative free drops",
+      "قطرات",
+      "قطرة",
+      "قطرات العين",
+      "دموع صناعية",
+      "قطرة مرطبة",
+      "قطرة مضاد",
+      "قطرة مضاد حيوي",
+      "قطرة بدون مواد حافظة"
+    ],
+    "intent_patterns": {
+      "storage": [
+        "كيف اخزن",
+        "كيف احفظ",
+        "تخزين",
+        "حفظ",
+        "ثلاجة",
+        "درجة حرارة",
+        "هل تنحط بالثلاجة",
+        "how to store",
+        "storage",
+        "fridge",
+        "temperature"
+      ],
+      "safety": [
+        "غير آمن",
+        "خربان",
+        "فاسد",
+        "منتهي",
+        "تغير اللون",
+        "رائحة",
+        "قوام",
+        "شوائب",
+        "تلوث",
+        "unsafe",
+        "expired",
+        "discolored",
+        "smell",
+        "thick",
+        "particles",
+        "contaminated"
+      ],
+      "safety_explain": [
+        "علامات فساد القطرات",
+        "كيف اعرف القطرات خربانه",
+        "what are unsafe signs of eye drops",
+        "how to tell if eye drops are bad"
+      ]
+    },
+    "storage": {
+      "room_temp_max_c": 25,
+      "notes_en": "Store at room temperature (below 25°C) unless the leaflet says otherwise. Some antibiotic or preservative-free drops may require refrigeration before opening.",
+      "notes_ar": "تُحفظ بدرجة الغرفة (أقل من ٢٥°) ما لم تنص النشرة على غير ذلك. بعض القطرات (خصوصًا المضاد أو الخالية من المواد الحافظة) قد تحتاج تبريد قبل الفتح.",
+      "can_return_to_fridge": true,
+      "tags": ["temperature_sensitive"],
+      "quick_facts_en": [
+        "Room temperature: below 25°C",
+        "Some types may need refrigeration (check leaflet)"
+      ],
+      "quick_facts_ar": [
+        "درجة الغرفة: أقل من ٢٥°",
+        "بعض الأنواع قد تحتاج تبريد (راجع النشرة)"
+      ]
+    },
+    "safety": {
+      "unsafe_signs": [
+        "discolored",
+        "bad_smell",
+        "thickened",
+        "expired",
+        "contaminated",
+        "overheated",
+        "frozen"
+      ],
+      "safe_signs": ["looks_normal", "normal_smell"],
+      "summary_en": "Eye drops may be unsafe if color/smell/texture changes, contamination is suspected, or they are expired.",
+      "summary_ar": "قطرات العين قد تكون غير آمنة إذا تغير اللون/الرائحة/القوام، أو كان هناك اشتباه تلوث، أو كانت منتهية الصلاحية.",
+      "enforce_color_policy": false,
+      "if_unsafe_en": "Do not use it. Replace it and ask a pharmacist/doctor, especially if contamination is possible.",
+      "if_unsafe_ar": "لا تستخدمها. استبدلها واسأل الصيدلي/الطبيب، خاصة إذا كان هناك احتمال تلوث.",
+      "if_unclear_en": "Tell me what changed: color, smell, thickness, particles, or expiry.",
+      "if_unclear_ar": "اذكر ما الذي تغيّر: اللون، الرائحة، القوام، وجود شوائب/جسيمات، أو الصلاحية.",
+      "clarifying_questions_en": [
+        "Did the color change or are there particles?",
+        "Does it smell unusual?",
+        "Did it become thicker than usual?",
+        "Is it expired?"
+      ],
+      "clarifying_questions_ar": [
+        "هل تغير اللون أو ظهرت شوائب/جسيمات؟",
+        "هل الرائحة غريبة؟",
+        "هل القوام صار أثخن من المعتاد؟",
+        "هل منتهية الصلاحية؟"
+      ]
+    }
+  },
+  {
+    "id": "cough_syrup",
+    "display_name_en": "Cough syrup",
+    "display_name_ar": "شراب الكحة",
+    "keywords": [
+      "cough",
+      "cough syrup",
+      "cough mixture",
+      "antitussive",
+      "expectorant",
+      "سعال",
+      "كحة",
+      "شراب كحة",
+      "شراب سعال",
+      "طارد للبلغم",
+      "شراب للسعال"
+    ],
+    "intent_patterns": {
+      "storage": [
+        "كيف اخزن",
+        "كيف احفظ",
+        "تخزين",
+        "حفظ",
+        "ثلاجة",
+        "درجة حرارة",
+        "كيف احطه",
+        "how to store",
+        "storage",
+        "temperature"
+      ],
+      "safety": [
+        "غير آمن",
+        "خربان",
+        "فاسد",
+        "منتهي",
+        "تغير اللون",
+        "رائحة",
+        "فقاعات",
+        "رغوة",
+        "قوام سميك",
+        "unsafe",
+        "expired",
+        "discolored",
+        "bad smell",
+        "foamy",
+        "bubbly",
+        "thickened"
+      ],
+      "safety_explain": [
+        "علامات فساد شراب الكحة",
+        "كيف اعرف شراب الكحه خربان",
+        "unsafe signs of cough syrup",
+        "how to tell if cough syrup is bad"
+      ]
+    },
+    "storage": {
+      "room_temp_max_c": 25,
+      "notes_en": "Keep tightly closed at room temperature (below 25°C). Some syrups (especially antibiotics after mixing) must be refrigerated—check the leaflet.",
+      "notes_ar": "يُغلق بإحكام ويُحفظ بدرجة الغرفة (أقل من ٢٥°). بعض الشرابات (خصوصًا المضادات بعد التحضير) تحتاج تبريد—راجع النشرة.",
+      "can_return_to_fridge": true,
+      "tags": [],
+      "quick_facts_en": [
+        "Room temperature: below 25°C",
+        "Keep tightly closed",
+        "Some types need refrigeration (check leaflet)"
+      ],
+      "quick_facts_ar": [
+        "درجة الغرفة: أقل من ٢٥°",
+        "أغلق العبوة بإحكام",
+        "بعض الأنواع تحتاج تبريد (راجع النشرة)"
+      ]
+    },
+    "safety": {
+      "unsafe_signs": [
+        "fermented",
+        "smell_alcohol",
+        "bad_smell",
+        "discolored",
+        "expired",
+        "thickened",
+        "overheated"
+      ],
+      "safe_signs": ["looks_normal", "normal_smell"],
+      "summary_en": "Cough syrup may be unsafe if foamy/bubbly, smells like alcohol/bad, changes color, thickens unusually, or is expired.",
+      "summary_ar": "شراب الكحة قد يكون غير آمن إذا ظهرت رغوة/فقاعات، أو رائحة كحول/رائحة سيئة، أو تغير اللون، أو صار سميكًا بشكل غير معتاد، أو انتهت الصلاحية.",
+      "enforce_color_policy": false,
+      "if_unsafe_en": "Do not use it. Dispose of it and replace it via a pharmacist.",
+      "if_unsafe_ar": "لا تستخدمه. تخلّص منه واستبدله عن طريق الصيدلي.",
+      "if_unclear_en": "Tell me if the issue is foam/bubbles, alcohol smell, color change, thickness, or expiry.",
+      "if_unclear_ar": "اذكر هل المشكلة: رغوة/فقاعات، رائحة كحول، تغير لون، زيادة سماكة، أو انتهاء الصلاحية.",
+      "clarifying_questions_en": [
+        "Is it foamy or bubbly?",
+        "Does it smell like alcohol or smell bad?",
+        "Has the color changed?",
+        "Is it expired?"
+      ],
+      "clarifying_questions_ar": [
+        "هل فيه رغوة أو فقاعات؟",
+        "هل فيه رائحة كحول أو رائحة سيئة؟",
+        "هل تغير اللون؟",
+        "هل منتهي الصلاحية؟"
+      ]
+    }
+  },
+  {
+    "id": "antibiotic_syrup",
+    "display_name_en": "Antibiotic syrup (e.g., Amoxicillin suspension)",
+    "display_name_ar": "شراب مضاد حيوي (مثل أموكسيسيلين)",
+    "keywords": [
+      "antibiotic",
+      "antibiotic syrup",
+      "amoxicillin",
+      "augmentin",
+      "suspension",
+      "reconstituted antibiotic",
+      "شراب مضاد",
+      "شراب المضاد",
+      "شراب أموكسيل",
+      "أموكسيسيلين",
+      "أوقمنتين",
+      "معلق",
+      "معلق مضاد",
+      "شراب اوجمينتين",
+      "شراب اوغمنتين"
+    ],
+    "intent_patterns": {
+      "storage": [
+        "كيف اخزن",
+        "كيف احفظ",
+        "بعد التحضير",
+        "بعد الخلط",
+        "يتحط بالثلاجة",
+        "ثلاجة",
+        "كم يوم",
+        "how to store",
+        "after mixing",
+        "after reconstitution",
+        "fridge",
+        "how long"
+      ],
+      "safety": [
+        "غير آمن",
+        "خربان",
+        "فاسد",
+        "منتهي",
+        "تغير اللون",
+        "رائحة",
+        "قوام لزج",
+        "بقى برا الثلاجة",
+        "unsafe",
+        "expired",
+        "discolored",
+        "bad smell",
+        "thickened",
+        "left out of fridge"
+      ],
+      "safety_explain": [
+        "علامات فساد شراب المضاد",
+        "كيف اعرف شراب المضاد خربان",
+        "unsafe signs of antibiotic syrup",
+        "how to tell if antibiotic suspension is bad"
+      ]
+    },
+    "storage": {
+      "temp_c": { "min": 2, "max": 8 },
+      "opened_days_hint": 14,
+      "notes_en": "After mixing/reconstitution: refrigerate at 2–8°C, do not freeze. Discard after the number of days on the label (often 7–14 days).",
+      "notes_ar": "بعد التحضير: يُحفظ بالثلاجة (٢–٨°) ولا يُجمّد. يُتلف بعد المدة المكتوبة على العبوة (غالبًا ٧–١٤ يومًا).",
+      "can_return_to_fridge": true,
+      "tags": ["refrigerated", "temperature_sensitive"],
+      "quick_facts_en": [
+        "After mixing: 2–8°C",
+        "Do not freeze",
+        "Discard per label (often 7–14 days)"
+      ],
+      "quick_facts_ar": [
+        "بعد التحضير: ٢–٨°",
+        "لا يُجمّد",
+        "يُتلف حسب الملصق (غالبًا ٧–١٤ يومًا)"
+      ]
+    },
+    "safety": {
+      "unsafe_signs": [
+        "bad_smell",
+        "thickened",
+        "discolored",
+        "expired",
+        "overheated",
+        "not_refrigerated",
+        "frozen"
+      ],
+      "safe_signs": ["normal_smell", "looks_normal"],
+      "summary_en": "Antibiotic syrup may be unsafe if smell/color/texture changes, it is expired, or it was kept improperly (e.g., long time outside refrigeration after mixing).",
+      "summary_ar": "شراب المضاد قد يكون غير آمن إذا تغيّرت الرائحة/اللون/القوام، أو انتهت الصلاحية، أو حُفظ بطريقة غير صحيحة (مثل البقاء خارج التبريد بعد التحضير).",
+      "enforce_color_policy": false,
+      "if_unsafe_en": "Do not use it. Replace it and contact a pharmacist/doctor—especially if storage was wrong.",
+      "if_unsafe_ar": "لا تستخدمه. استبدله وتواصل مع الصيدلي/الطبيب—خصوصًا إذا كان التخزين غير صحيح.",
+      "if_unclear_en": "Tell me: was it mixed/reconstituted, and how was it stored (fridge or room temperature)?",
+      "if_unclear_ar": "اذكر: هل هو مُحضّر/مُمزوج؟ وكيف تم حفظه (ثلاجة أم درجة الغرفة)؟",
+      "clarifying_questions_en": [
+        "Does it smell bad or unusual?",
+        "Has it become thicker/stickier than usual?",
+        "Has the color changed?",
+        "Was it kept outside the fridge after mixing?",
+        "Is it expired?"
+      ],
+      "clarifying_questions_ar": [
+        "هل الرائحة سيئة أو غريبة؟",
+        "هل القوام صار سميك/لزج أكثر من المعتاد؟",
+        "هل تغير اللون؟",
+        "هل بقى خارج الثلاجة بعد التحضير؟",
+        "هل منتهي الصلاحية؟"
+      ]
+    }
+  },
+  {
+    "id": "pain_relief_tablets",
+    "display_name_en": "Pain relief tablets (e.g., Paracetamol/Ibuprofen)",
+    "display_name_ar": "مسكنات الألم (مثل باراسيتامول/بروفين)",
+    "keywords": [
+      "painkiller",
+      "pain relief",
+      "paracetamol",
+      "panadol",
+      "acetaminophen",
+      "ibuprofen",
+      "brufen",
+      "advil",
+      "مسكن",
+      "مسكنات",
+      "بانادول",
+      "فيفادول",
+      "باراسيتامول",
+      "بنادول",
+      "بروفين",
+      "ادفيل",
+      "حبوب",
+      "اقراص"
+    ],
+    "intent_patterns": {
+      "storage": [
+        "كيف اخزن",
+        "كيف احفظ",
+        "مكان جاف",
+        "رطوبة",
+        "تخزين",
+        "حفظ",
+        "how to store",
+        "dry place",
+        "moisture",
+        "storage"
+      ],
+      "safety": [
+        "غير آمن",
+        "خربان",
+        "فاسد",
+        "منتهي",
+        "رطب",
+        "لزج",
+        "مفتت",
+        "مشقّق",
+        "رائحة غريبة",
+        "unsafe",
+        "expired",
+        "wet",
+        "sticky",
+        "crumbly",
+        "cracked",
+        "bad smell"
+      ],
+      "safety_explain": [
+        "علامات فساد الحبوب",
+        "كيف اعرف الحبوب خربانه",
+        "unsafe signs of tablets",
+        "how to tell if tablets are bad"
+      ]
+    },
+    "storage": {
+      "room_temp_range_c": { "min": 20, "max": 25 },
+      "notes_en": "Store in a dry place at room temperature (about 20–25°C). Avoid moisture and direct sunlight.",
+      "notes_ar": "تُحفظ في مكان جاف بدرجة الغرفة (حوالي ٢٠–٢٥°) بعيدًا عن الشمس والرطوبة.",
+      "can_return_to_fridge": false,
+      "tags": [],
+      "quick_facts_en": [
+        "Dry place",
+        "Avoid moisture",
+        "Avoid direct sunlight"
+      ],
+      "quick_facts_ar": ["مكان جاف", "تجنب الرطوبة", "تجنب الشمس المباشرة"]
+    },
+    "safety": {
+      "unsafe_signs": [
+        "moist",
+        "cracked",
+        "expired",
+        "discolored",
+        "bad_smell",
+        "overheated"
+      ],
+      "safe_signs": ["dry_intact"],
+      "summary_en": "Tablets may be unsafe if wet/sticky, cracked/crumbly, discolored, smell unusual, or expired.",
+      "summary_ar": "الأقراص قد تكون غير آمنة إذا كانت رطبة/لزجة، أو مشققة/مفتتة، أو تغير لونها، أو رائحتها غريبة، أو منتهية الصلاحية.",
+      "enforce_color_policy": false,
+      "if_unsafe_en": "Do not use them. Dispose and replace them.",
+      "if_unsafe_ar": "لا تستخدمها. تخلّص منها واستبدلها.",
+      "if_unclear_en": "Tell me: are they moist, cracked/crumbly, and what is the expiry status?",
+      "if_unclear_ar": "اذكر: هل هي رطبة؟ هل هي مشققة/مفتتة؟ وهل الصلاحية منتهية؟",
+      "clarifying_questions_en": [
+        "Are the tablets moist or sticky?",
+        "Are they cracked or crumbling?",
+        "Are they expired?"
+      ],
+      "clarifying_questions_ar": [
+        "هل الحبوب رطبة أو لزجة؟",
+        "هل هي مشققة أو تتفتت؟",
+        "هل منتهية الصلاحية؟"
+      ]
+    }
+  },
+  {
+    "id": "topical_cream",
+    "display_name_en": "Topical cream or ointment",
+    "display_name_ar": "الكريمات والمراهم",
+    "keywords": [
+      "cream",
+      "ointment",
+      "topical",
+      "hydrocortisone",
+      "moisturizing cream",
+      "antifungal cream",
+      "كريم",
+      "مرهم",
+      "مرطب",
+      "كريم مطهر",
+      "مرهم مضاد",
+      "كريم فطريات",
+      "كريم حساسية"
+    ],
+    "intent_patterns": {
+      "storage": [
+        "كيف اخزن",
+        "كيف احفظ",
+        "تخزين",
+        "حفظ",
+        "حرارة",
+        "شمس",
+        "how to store",
+        "storage",
+        "heat",
+        "sun"
+      ],
+      "safety": [
+        "غير آمن",
+        "خربان",
+        "فاسد",
+        "منتهي",
+        "تغير اللون",
+        "رائحة",
+        "انفصل",
+        "مائي",
+        "تلوث",
+        "unsafe",
+        "expired",
+        "discolored",
+        "bad smell",
+        "separated",
+        "contaminated"
+      ],
+      "safety_explain": [
+        "علامات فساد الكريم",
+        "كيف اعرف الكريم خربان",
+        "unsafe signs of cream",
+        "how to tell if ointment is bad"
+      ]
+    },
+    "storage": {
+      "room_temp_max_c": 25,
+      "notes_en": "Store at room temperature (below 25°C), away from direct heat/sunlight. Do not refrigerate unless the leaflet says so.",
+      "notes_ar": "تُحفظ بدرجة الغرفة (أقل من ٢٥°) بعيدًا عن الحرارة/الشمس. لا تُبرّد إلا إذا أوصت النشرة.",
+      "can_return_to_fridge": false,
+      "tags": [],
+      "quick_facts_en": [
+        "Below 25°C",
+        "Away from heat/sunlight",
+        "Do not refrigerate unless leaflet says"
+      ],
+      "quick_facts_ar": [
+        "أقل من ٢٥°",
+        "بعيدًا عن الحرارة/الشمس",
+        "لا تُبرّد إلا إذا قالت النشرة"
+      ]
+    },
+    "safety": {
+      "unsafe_signs": [
+        "discolored",
+        "bad_smell",
+        "separated",
+        "expired",
+        "contaminated",
+        "overheated"
+      ],
+      "safe_signs": ["looks_normal"],
+      "summary_en": "Cream/ointment may be unsafe if color/smell changes, it separates badly, contamination is possible, or it is expired.",
+      "summary_ar": "الكريم/المرهم قد يكون غير آمن إذا تغير اللون/الرائحة، أو صار منفصلًا بشكل واضح، أو كان هناك احتمال تلوث، أو انتهت الصلاحية.",
+      "enforce_color_policy": false,
+      "if_unsafe_en": "Do not use it. Replace it and ask a pharmacist if needed.",
+      "if_unsafe_ar": "لا تستخدمه. استبدله واسأل الصيدلي عند الحاجة.",
+      "if_unclear_en": "Tell me what changed: color, smell, separation, or expiry.",
+      "if_unclear_ar": "اذكر ما الذي تغيّر: اللون، الرائحة، الانفصال، أو الصلاحية.",
+      "clarifying_questions_en": [
+        "Did the color or smell change?",
+        "Did it separate (oil/water) or become very runny?",
+        "Is it expired?"
+      ],
+      "clarifying_questions_ar": [
+        "هل تغير اللون أو الرائحة؟",
+        "هل انفصل (زيت/ماء) أو صار سائلًا جدًا؟",
+        "هل منتهي الصلاحية؟"
+      ]
+    }
+  },
+  {
+    "id": "asthma_inhaler",
+    "display_name_en": "Asthma inhaler (puffer)",
+    "display_name_ar": "بخاخ الربو",
+    "keywords": [
+      "inhaler",
+      "puffer",
+      "salbutamol",
+      "ventolin",
+      "symbicort",
+      "seretide",
+      "بخاخ",
+      "بخاخ الربو",
+      "فنتولين",
+      "سالبيوتامول",
+      "سيريتايد",
+      "سيمبيكورت",
+      "بخاخ فنتولين",
+      "بخاخ سيمبيكورت"
+    ],
+    "intent_patterns": {
+      "storage": [
+        "كيف اخزن",
+        "كيف احفظ",
+        "تخزين",
+        "حفظ",
+        "حرارة",
+        "شمس",
+        "لا تجمد",
+        "how to store",
+        "storage",
+        "heat",
+        "sun",
+        "do not freeze"
+      ],
+      "safety": [
+        "غير آمن",
+        "خربان",
+        "فاسد",
+        "منتهي",
+        "تالف",
+        "تسريب",
+        "تعرض لحرارة",
+        "تعرض لتجمد",
+        "unsafe",
+        "expired",
+        "damaged",
+        "leaking",
+        "overheated",
+        "frozen"
+      ],
+      "safety_explain": [
+        "علامات فساد البخاخ",
+        "كيف اعرف البخاخ خربان",
+        "unsafe signs of inhaler",
+        "how to tell if inhaler is bad"
+      ]
+    },
+    "storage": {
+      "room_temp_max_c": 30,
+      "notes_en": "Store below 30°C, away from direct sunlight and heat sources. Do not freeze. Do not pierce the canister.",
+      "notes_ar": "يُحفظ أقل من ٣٠° بعيدًا عن الشمس والحرارة. لا يُجمّد. لا يُثقب.",
+      "can_return_to_fridge": false,
+      "tags": ["temperature_sensitive"],
+      "quick_facts_en": [
+        "Below 30°C",
+        "Away from heat/sun",
+        "Do not freeze",
+        "Do not pierce canister"
+      ],
+      "quick_facts_ar": [
+        "أقل من ٣٠°",
+        "بعيدًا عن الحرارة/الشمس",
+        "لا يُجمّد",
+        "لا تُثقب العبوة"
+      ]
+    },
+    "safety": {
+      "unsafe_signs": ["overheated", "frozen", "damaged", "expired"],
+      "safe_signs": ["looks_normal"],
+      "summary_en": "An inhaler may be unsafe if exposed to high heat/freezing, damaged, or expired.",
+      "summary_ar": "البخاخ قد يكون غير آمن إذا تعرض لحرارة عالية/تجمّد، أو كان تالفًا، أو منتهي الصلاحية.",
+      "enforce_color_policy": false,
+      "if_unsafe_en": "Do not use it. Replace it and ask a pharmacist/doctor, especially if it was left in heat (car/sun).",
+      "if_unsafe_ar": "لا تستخدمه. استبدله واسأل الصيدلي/الطبيب، خصوصًا إذا تُرك في حرارة (السيارة/الشمس).",
+      "if_unclear_enளம்": "Tell me if it was left in heat, if the canister is damaged, and if it’s expired.",
+      "if_unclear_en": "Tell me if it was left in heat, if the canister is damaged, and if it’s expired.",
+      "if_unclear_ar": "اذكر هل تُرك في حرارة، وهل العبوة تالفة، وهل الصلاحية منتهية.",
+      "clarifying_questions_en": [
+        "Was it left in heat/sun (e.g., car)?",
+        "Is the canister damaged or leaking?",
+        "Is it expired?"
+      ],
+      "clarifying_questions_ar": [
+        "هل تُرك في حرارة/شمس (مثل السيارة)؟",
+        "هل العبوة تالفة أو فيها تسريب؟",
+        "هل منتهي الصلاحية؟"
+      ]
+    }
+  },
+  {
+    "id": "nasal_spray",
+    "display_name_en": "Nasal spray",
+    "display_name_ar": "بخاخ الأنف",
+    "keywords": [
+      "nasal spray",
+      "otrivin",
+      "fluticasone",
+      "saline spray",
+      "decongestant spray",
+      "بخاخ الأنف",
+      "أوتريفين",
+      "فليكسونيز",
+      "بخاخ ملحي",
+      "بخاخ احتقان"
+    ],
+    "intent_patterns": {
+      "storage": [
+        "كيف اخزن",
+        "كيف احفظ",
+        "تخزين",
+        "حفظ",
+        "درجة حرارة",
+        "how to store",
+        "storage",
+        "temperature"
+      ],
+      "safety": [
+        "غير آمن",
+        "خربان",
+        "فاسد",
+        "منتهي",
+        "تغير اللون",
+        "رائحة",
+        "قوام",
+        "تلوث",
+        "unsafe",
+        "expired",
+        "discolored",
+        "smell",
+        "thickened",
+        "contaminated"
+      ],
+      "safety_explain": [
+        "علامات فساد بخاخ الأنف",
+        "كيف اعرف بخاخ الأنف خربان",
+        "unsafe signs of nasal spray",
+        "how to tell if nasal spray is bad"
+      ]
+    },
+    "storage": {
+      "room_temp_max_c": 25,
+      "notes_en": "Store at room temperature (below 25°C). Keep nozzle clean and cap tightly after use.",
+      "notes_ar": "تُحفظ بدرجة الغرفة (أقل من ٢٥°). حافظ على نظافة الفوهة وأغلق الغطاء جيدًا بعد الاستخدام.",
+      "can_return_to_fridge": false,
+      "tags": [],
+      "quick_facts_en": [
+        "Below 25°C",
+        "Keep nozzle clean",
+        "Close cap tightly"
+      ],
+      "quick_facts_ar": ["أقل من ٢٥°", "نظّف الفوهة", "أغلق الغطاء بإحكام"]
+    },
+    "safety": {
+      "unsafe_signs": [
+        "discolored",
+        "bad_smell",
+        "thickened",
+        "expired",
+        "contaminated",
+        "overheated",
+        "frozen"
+      ],
+      "safe_signs": ["looks_normal", "normal_smell"],
+      "summary_en": "Nasal spray may be unsafe if color/smell/texture changes, contamination is possible, or expired.",
+      "summary_ar": "بخاخ الأنف قد يكون غير آمن إذا تغير اللون/الرائحة/القوام، أو كان هناك احتمال تلوث، أو انتهت الصلاحية.",
+      "enforce_color_policy": false,
+      "if_unsafe_en": "Do not use it. Replace it and ask a pharmacist if needed.",
+      "if_unsafe_ar": "لا تستخدمه. استبدله واسأل الصيدلي عند الحاجة.",
+      "if_unclear_en": "Tell me what changed: color, smell, thickness, or expiry.",
+      "if_unclear_ar": "اذكر ما الذي تغيّر: اللون، الرائحة، القوام، أو الصلاحية.",
+      "clarifying_questions_en": [
+        "Did the color change?",
+        "Does it smell unusual?",
+        "Is it expired?"
+      ],
+      "clarifying_questions_ar": [
+        "هل تغير اللون؟",
+        "هل الرائحة غريبة؟",
+        "هل منتهي الصلاحية؟"
+      ]
+    }
+  },
+  {
+    "id": "antiseptic_solution",
+    "display_name_en": "Antiseptic solution",
+    "display_name_ar": "المطهرات السائلة",
+    "keywords": [
+      "antiseptic",
+      "betadine",
+      "dettol",
+      "savlon",
+      "chlorhexidine",
+      "iodine",
+      "مطهر",
+      "مطهرات",
+      "بيتادين",
+      "ديتول",
+      "سافلون",
+      "كلورهكسيدين",
+      "يود"
+    ],
+    "intent_patterns": {
+      "storage": [
+        "كيف اخزن",
+        "كيف احفظ",
+        "تخزين",
+        "حفظ",
+        "شمس",
+        "حرارة",
+        "how to store",
+        "storage",
+        "sun",
+        "heat"
+      ],
+      "safety": [
+        "غير آمن",
+        "خربان",
+        "فاسد",
+        "منتهي",
+        "تلوث",
+        "عكارة",
+        "شوائب",
+        "تغير اللون",
+        "رائحة",
+        "unsafe",
+        "expired",
+        "contaminated",
+        "cloudy",
+        "particles",
+        "discolored"
+      ],
+      "safety_explain": [
+        "علامات فساد المطهر",
+        "كيف اعرف المطهر خربان",
+        "unsafe signs of antiseptic",
+        "how to tell if antiseptic is bad"
+      ]
+    },
+    "storage": {
+      "room_temp_max_c": 30,
+      "notes_en": "Store at room temperature (below 30°C), tightly closed, away from direct sunlight.",
+      "notes_ar": "تُحفظ بدرجة الغرفة (أقل من ٣٠°) بإحكام بعيدًا عن الشمس.",
+      "can_return_to_fridge": false,
+      "tags": [],
+      "quick_facts_en": [
+        "Below 30°C",
+        "Keep tightly closed",
+        "Away from direct sunlight"
+      ],
+      "quick_facts_ar": [
+        "أقل من ٣٠°",
+        "أغلق بإحكام",
+        "بعيدًا عن الشمس المباشرة"
+      ]
+    },
+    "safety": {
+      "unsafe_signs": [
+        "contaminated",
+        "discolored",
+        "bad_smell",
+        "expired",
+        "overheated"
+      ],
+      "safe_signs": ["looks_normal"],
+      "summary_en": "An antiseptic solution may be unsafe if contamination is suspected, appearance/smell changes, or expired.",
+      "summary_ar": "المطهر السائل قد يكون غير آمن إذا كان هناك اشتباه تلوث، أو تغير الشكل/الرائحة، أو انتهت الصلاحية.",
+      "enforce_color_policy": false,
+      "if_unsafe_en": "Do not use it. Replace it if in doubt.",
+      "if_unsafe_ar": "لا تستخدمه. استبدله إذا كان لديك شك.",
+      "if_unclear_en": "Tell me if there are particles, cloudiness, a smell change, or expiry.",
+      "if_unclear_ar": "اذكر هل توجد شوائب/عكارة، أو تغير رائحة، أو انتهاء صلاحية.",
+      "clarifying_questions_en": [
+        "Are there particles/cloudiness?",
+        "Did the smell change?",
+        "Is it expired?"
+      ],
+      "clarifying_questions_ar": [
+        "هل توجد شوائب/عكارة؟",
+        "هل تغيرت الرائحة؟",
+        "هل منتهي الصلاحية؟"
+      ]
+    }
+  },
+  {
+    "id": "eye_ointment",
+    "display_name_en": "Eye ointment",
+    "display_name_ar": "مرهم العين",
+    "keywords": [
+      "eye ointment",
+      "ointment eye",
+      "chloramphenicol",
+      "erythromycin eye ointment",
+      "مرهم العين",
+      "مرهم",
+      "مرهم مضاد حيوي للعين",
+      "كلورامفينيكول",
+      "اريثروميسين"
+    ],
+    "intent_patterns": {
+      "storage": [
+        "كيف اخزن",
+        "كيف احفظ",
+        "تخزين",
+        "حفظ",
+        "درجة حرارة",
+        "ثلاجة",
+        "how to store",
+        "storage",
+        "temperature",
+        "fridge"
+      ],
+      "safety": [
+        "غير آمن",
+        "خربان",
+        "فاسد",
+        "منتهي",
+        "تغير اللون",
+        "رائحة",
+        "انفصل",
+        "تلوث",
+        "unsafe",
+        "expired",
+        "discolored",
+        "bad smell",
+        "separated",
+        "contaminated"
+      ],
+      "safety_explain": [
+        "علامات فساد مرهم العين",
+        "كيف اعرف مرهم العين خربان",
+        "unsafe signs of eye ointment",
+        "how to tell if eye ointment is bad"
+      ]
+    },
+    "storage": {
+      "room_temp_max_c": 25,
+      "notes_en": "Store at room temperature (below 25°C). Some brands require refrigeration before opening—check the leaflet.",
+      "notes_ar": "تُحفظ بدرجة الغرفة (أقل من ٢٥°). بعض الأنواع تحتاج تبريد قبل الفتح—راجع النشرة.",
+      "can_return_to_fridge": true,
+      "tags": [],
+      "quick_facts_en": [
+        "Below 25°C",
+        "Some brands may need refrigeration (check leaflet)"
+      ],
+      "quick_facts_ar": [
+        "أقل من ٢٥°",
+        "بعض الأنواع قد تحتاج تبريد (راجع النشرة)"
+      ]
+    },
+    "safety": {
+      "unsafe_signs": [
+        "discolored",
+        "bad_smell",
+        "separated",
+        "expired",
+        "contaminated",
+        "overheated",
+        "frozen"
+      ],
+      "safe_signs": ["looks_normal"],
+      "summary_en": "Eye ointment may be unsafe if color/smell changes, separation occurs, contamination is suspected, or expired.",
+      "summary_ar": "مرهم العين قد يكون غير آمن إذا تغير اللون/الرائحة، أو حدث انفصال، أو كان هناك اشتباه تلوث، أو انتهت الصلاحية.",
+      "enforce_color_policy": false,
+      "if_unsafe_en": "Do not use it. Replace it and ask a pharmacist/doctor.",
+      "if_unsafe_ar": "لا تستخدمه. استبدله واسأل الصيدلي/الطبيب.",
+      "if_unclear_en": "Tell me what changed: color, smell, separation, or expiry.",
+      "if_unclear_ar": "اذكر ما الذي تغيّر: اللون، الرائحة، الانفصال، أو الصلاحية.",
+      "clarifying_questions_en": [
+        "Did color or smell change?",
+        "Did it separate or become runny?",
+        "Is it expired?"
+      ],
+      "clarifying_questions_ar": [
+        "هل تغير اللون أو الرائحة؟",
+        "هل انفصل أو صار سائلًا؟",
+        "هل منتهي الصلاحية؟"
+      ]
+    }
+  },
+  {
+    "id": "ear_drops",
+    "display_name_en": "Ear drops",
+    "display_name_ar": "قطرات الأذن",
+    "keywords": [
+      "ear drops",
+      "wax remover",
+      "antibiotic ear drops",
+      "قطرات الأذن",
+      "قطرة أذن",
+      "قطرة شمع",
+      "قطرة مضاد أذن",
+      "قطرة مضاد حيوي للأذن"
+    ],
+    "intent_patterns": {
+      "storage": [
+        "كيف اخزن",
+        "كيف احفظ",
+        "تخزين",
+        "حفظ",
+        "ثلاجة",
+        "درجة حرارة",
+        "how to store",
+        "storage",
+        "fridge",
+        "temperature"
+      ],
+      "safety": [
+        "غير آمن",
+        "خربان",
+        "فاسد",
+        "منتهي",
+        "تغير اللون",
+        "رائحة",
+        "قوام",
+        "تلوث",
+        "unsafe",
+        "expired",
+        "discolored",
+        "smell",
+        "thickened",
+        "contaminated"
+      ],
+      "safety_explain": [
+        "علامات فساد قطرات الأذن",
+        "كيف اعرف قطرات الأذن خربانه",
+        "unsafe signs of ear drops",
+        "how to tell if ear drops are bad"
+      ]
+    },
+    "storage": {
+      "room_temp_max_c": 25,
+      "notes_en": "Store at room temperature (below 25°C). Some antibiotic ear drops may require refrigeration—check the leaflet.",
+      "notes_ar": "تُحفظ بدرجة الغرفة (أقل من ٢٥°). بعض قطرات الأذن (خصوصًا المضاد) قد تحتاج تبريد—راجع النشرة.",
+      "can_return_to_fridge": true,
+      "tags": [],
+      "quick_facts_en": [
+        "Below 25°C",
+        "Some antibiotic drops may need refrigeration (check leaflet)"
+      ],
+      "quick_facts_ar": [
+        "أقل من ٢٥°",
+        "بعض قطرات المضاد قد تحتاج تبريد (راجع النشرة)"
+      ]
+    },
+    "safety": {
+      "unsafe_signs": [
+        "discolored",
+        "bad_smell",
+        "thickened",
+        "expired",
+        "contaminated",
+        "overheated",
+        "frozen"
+      ],
+      "safe_signs": ["looks_normal", "normal_smell"],
+      "summary_en": "Ear drops may be unsafe if color/smell/texture changes, contamination is suspected, or expired.",
+      "summary_ar": "قطرات الأذن قد تكون غير آمنة إذا تغير اللون/الرائحة/القوام، أو كان هناك اشتباه تلوث، أو انتهت الصلاحية.",
+      "enforce_color_policy": false,
+      "if_unsafe_en": "Do not use it. Replace it and ask a pharmacist if needed.",
+      "if_unsafe_ar": "لا تستخدمها. استبدلها واسأل الصيدلي عند الحاجة.",
+      "if_unclear_en": "Tell me what changed: color, smell, thickness, or expiry.",
+      "if_unclear_ar": "اذكر ما الذي تغيّر: اللون، الرائحة، القوام، أو الصلاحية.",
+      "clarifying_questions_en": [
+        "Did the color change?",
+        "Does it smell unusual?",
+        "Is it expired?"
+      ],
+      "clarifying_questions_ar": [
+        "هل تغير اللون؟",
+        "هل الرائحة غريبة؟",
+        "هل منتهي الصلاحية؟"
+      ]
+    }
+  },
+  {
+    "id": "vitamin_syrup",
+    "display_name_en": "Vitamin syrup",
+    "display_name_ar": "شراب الفيتامينات",
+    "keywords": [
+      "vitamin syrup",
+      "multivitamin syrup",
+      "ferrosanol",
+      "iron syrup",
+      "شراب الفيتامينات",
+      "فيتامينات للأطفال",
+      "شراب الحديد",
+      "فيروسانول",
+      "شراب فيتامين",
+      "مكمل شراب"
+    ],
+    "intent_patterns": {
+      "storage": [
+        "كيف اخزن",
+        "كيف احفظ",
+        "تخزين",
+        "حفظ",
+        "درجة حرارة",
+        "how to store",
+        "storage",
+        "temperature"
+      ],
+      "safety": [
+        "غير آمن",
+        "خربان",
+        "فاسد",
+        "منتهي",
+        "تغير اللون",
+        "رائحة",
+        "قوام",
+        "فقاعات",
+        "رغوة",
+        "unsafe",
+        "expired",
+        "discolored",
+        "bad smell",
+        "thickened",
+        "foamy"
+      ],
+      "safety_explain": [
+        "علامات فساد شراب الفيتامينات",
+        "كيف اعرف شراب الفيتامينات خربان",
+        "unsafe signs of vitamin syrup",
+        "how to tell if vitamin syrup is bad"
+      ]
+    },
+    "storage": {
+      "room_temp_max_c": 25,
+      "notes_en": "Store at room temperature (below 25°C). Shake well before use.",
+      "notes_ar": "تُحفظ بدرجة الغرفة (أقل من ٢٥°). يُرج قبل الاستخدام.",
+      "can_return_to_fridge": false,
+      "tags": [],
+      "quick_facts_en": ["Below 25°C", "Shake well before use"],
+      "quick_facts_ar": ["أقل من ٢٥°", "يُرج قبل الاستخدام"]
+    },
+    "safety": {
+      "unsafe_signs": [
+        "discolored",
+        "bad_smell",
+        "thickened",
+        "expired",
+        "fermented",
+        "overheated"
+      ],
+      "safe_signs": ["looks_normal", "normal_smell"],
+      "summary_en": "Vitamin syrup may be unsafe if color/smell/texture changes, it ferments/foams, or is expired.",
+      "summary_ar": "شراب الفيتامينات قد يكون غير آمن إذا تغير اللون/الرائحة/القوام، أو ظهرت رغوة/تخمّر، أو انتهت الصلاحية.",
+      "enforce_color_policy": false,
+      "if_unsafe_en": "Do not use it. Replace it if in doubt.",
+      "if_unsafe_ar": "لا تستخدمه. استبدله إذا كان لديك شك.",
+      "if_unclear_en": "Tell me if the issue is color, smell, thickness, foam/bubbles, or expiry.",
+      "if_unclear_ar": "اذكر هل المشكلة في اللون، الرائحة، القوام، الرغوة/الفقاعات، أو الصلاحية.",
+      "clarifying_questions_en": [
+        "Has the color changed?",
+        "Does it smell unusual?",
+        "Is it expired?"
+      ],
+      "clarifying_questions_ar": [
+        "هل تغير اللون؟",
+        "هل الرائحة غريبة؟",
+        "هل منتهي الصلاحية؟"
+      ]
+    }
+  },
+  {
+    "id": "hydrogen_peroxide",
+    "display_name_en": "Hydrogen peroxide (antiseptic)",
+    "display_name_ar": "بيروكسيد الهيدروجين (مطهر)",
+    "keywords": [
+      "hydrogen peroxide",
+      "h2o2",
+      "peroxide",
+      "بيروكسيد",
+      "بيروكسيد الهيدروجين",
+      "مطهر للجروح",
+      "اوكسجين ماء",
+      "ماء اوكسجين"
+    ],
+    "intent_patterns": {
+      "storage": [
+        "كيف اخزن",
+        "كيف احفظ",
+        "تخزين",
+        "حفظ",
+        "مكان مظلم",
+        "مكان بارد",
+        "how to store",
+        "storage",
+        "cool place",
+        "dark place"
+      ],
+      "safety": [
+        "غير آمن",
+        "خربان",
+        "فاسد",
+        "منتهي",
+        "تغير اللون",
+        "عكر",
+        "شوائب",
+        "unsafe",
+        "expired",
+        "discolored",
+        "cloudy",
+        "particles"
+      ],
+      "safety_explain": [
+        "علامات فساد بيروكسيد الهيدروجين",
+        "كيف اعرف بيروكسيد خربان",
+        "unsafe signs of hydrogen peroxide",
+        "how to tell if hydrogen peroxide is bad"
+      ]
+    },
+    "storage": {
+      "room_temp_max_c": 25,
+      "notes_en": "Keep tightly closed in a cool, dark place (below 25°C).",
+      "notes_ar": "تُحفظ العبوة مغلقة في مكان بارد ومظلم (أقل من ٢٥°).",
+      "can_return_to_fridge": false,
+      "tags": [],
+      "quick_facts_en": [
+        "Cool, dark place",
+        "Keep tightly closed",
+        "Below 25°C"
+      ],
+      "quick_facts_ar": ["مكان بارد ومظلم", "أغلق بإحكام", "أقل من ٢٥°"]
+    },
+    "safety": {
+      "unsafe_signs": ["contaminated", "discolored", "expired", "overheated"],
+      "safe_signs": ["looks_normal"],
+      "summary_en": "Hydrogen peroxide may be unsafe if contaminated, discolored, or expired.",
+      "summary_ar": "بيروكسيد الهيدروجين قد يكون غير آمن إذا كان ملوثًا، أو تغير لونه، أو انتهت صلاحيته.",
+      "enforce_color_policy": false,
+      "if_unsafe_en": "Do not use it. Replace it if in doubt.",
+      "if_unsafe_ar": "لا تستخدمه. استبدله إذا كان لديك شك.",
+      "if_unclear_en": "Tell me if it changed color/clarity or is expired.",
+      "if_unclear_ar": "اذكر هل تغير اللون/الصفاء أو انتهت الصلاحية.",
+      "clarifying_questions_en": [
+        "Did the appearance change?",
+        "Is it expired?"
+      ],
+      "clarifying_questions_ar": ["هل تغير الشكل/الصفاء؟", "هل منتهي الصلاحية؟"]
+    }
+  }
+]

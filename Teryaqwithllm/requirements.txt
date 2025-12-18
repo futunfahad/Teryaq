@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+psycopg2-binary
+sqlalchemy
+python-dotenv
+Faker
+pandas
+hijri-converter
+rapidfuzz
+pyrebase4

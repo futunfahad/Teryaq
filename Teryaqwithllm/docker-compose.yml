@@ -1,0 +1,145 @@
+version: "3.9"
+
+services:
+  # ========================
+  # 🐘 PostgreSQL Database
+  # ========================
+  postgres:
+    image: postgres:14
+    container_name: postgres_container
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_DB: med_delivery
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d med_delivery"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  # ========================
+  # 🧩 Dummy Data Generator
+  # ========================
+  dummy_data:
+    build:
+      context: .
+      dockerfile: Dockerfile.dummy
+    container_name: dummy_data_container
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_DB: med_delivery
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+    volumes:
+      - ./dummydatagen.py:/app/dummydatagen.py
+    command: ["python", "dummydatagen.py"]
+
+  # ========================
+  # 🧠 (Optional) pgAdmin GUI
+  # ========================
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin_container
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  # ========================
+  # 🌬️ Apache Airflow - Webserver
+  # ========================
+  airflow-webserver:
+    image: apache/airflow:2.9.2
+    container_name: airflow-webserver
+    restart: always
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__CORE__LOAD_EXAMPLES: "False"
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://postgres:mysecretpassword@postgres:5432/airflow
+    command: >
+      bash -c "pip install --no-cache-dir -r /requirements.txt &&
+               airflow db migrate &&
+               airflow users create --username admin --firstname Admin --lastname User --role Admin --email admin@example.com --password admin || true &&
+               airflow webserver"
+    ports:
+      - "8090:8080"
+    volumes:
+      - ./requirements.txt:/requirements.txt
+      - ./dags:/opt/airflow/dags
+      - ./etl:/opt/airflow/etl
+      - ./data:/opt/airflow/data
+
+  # ========================
+  # 🕒 Apache Airflow - Scheduler
+  # ========================
+  airflow-scheduler:
+    image: apache/airflow:2.9.2
+    container_name: airflow-scheduler
+    restart: always
+    depends_on:
+      airflow-webserver:
+        condition: service_started
+      postgres:
+        condition: service_healthy
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__CORE__LOAD_EXAMPLES: "False"
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://postgres:mysecretpassword@postgres:5432/airflow
+    command: >
+      bash -c "pip install --no-cache-dir -r /requirements.txt &&
+               airflow db migrate &&
+               airflow scheduler"
+    volumes:
+      - ./requirements.txt:/requirements.txt
+      - ./dags:/opt/airflow/dags
+      - ./etl:/opt/airflow/etl
+      - ./data:/opt/airflow/data
+
+  # ========================
+  # 🚀 FastAPI API (No AI)
+  # ========================
+  api:
+    build:
+      context: ./api
+    container_name: teryaq_api
+    depends_on:
+      postgres:
+        condition: service_healthy
+      dummy_data:
+        condition: service_completed_successfully
+    environment:
+      DB_USER: postgres
+      DB_PASSWORD: mysecretpassword
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: med_delivery
+
+      FIREBASE_CREDENTIALS: "/app/secrets/serviceAccountKey.json"
+      FIREBASE_STORAGE_BUCKET: "teryaqauth.appspot.com"
+
+    ports:
+      - "8000:8000"
+
+    volumes:
+      - ./api:/app
+      - ./api/secrets:/app/secrets
+
+volumes:
+  postgres_data:

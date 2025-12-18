@@ -1,0 +1,3 @@
+cd app
+ollama pull iKhalid/ALLaM:7b-q3_K_S
+uvicorn main:app --reload --port 7860

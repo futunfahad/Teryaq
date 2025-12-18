@@ -1,0 +1,247 @@
+{
+  "unsafe": {
+    "clumpy": [
+      "clumpy",
+      "lumpy",
+      "chunky",
+      "particles",
+      "sediment",
+      "متكتل",
+      "تكتلات",
+      "كتل",
+      "متجمع",
+      "رواسب",
+      "شوائب"
+    ],
+    "frozen": [
+      "frozen",
+      "freeze",
+      "iced",
+      "solidified",
+      "ice crystals",
+      "مجمد",
+      "مثلج",
+      "ثلج",
+      "تجمد",
+      "بلور ثلج"
+    ],
+    "discolored": [
+      "discolored",
+      "color changed",
+      "off color",
+      "yellow",
+      "yellowish",
+      "brown",
+      "brownish",
+      "black",
+      "green",
+      "pink",
+      "orange",
+      "grey",
+      "gray",
+      "تغير اللون",
+      "اصفر",
+      "أصفر",
+      "مصفر",
+      "بني",
+      "غامق",
+      "اسود",
+      "أسود",
+      "اخضر",
+      "أخضر",
+      "وردي",
+      "برتقالي",
+      "رمادي"
+    ],
+    "expired": [
+      "expired",
+      "out of date",
+      "past expiry",
+      "منتهي الصلاحية",
+      "انتهى",
+      "تاريخ انتهى",
+      "منتهي"
+    ],
+    "bad_smell": [
+      "bad smell",
+      "weird smell",
+      "strange odor",
+      "odd odor",
+      "stinky",
+      "rancid",
+      "رائحة سيئة",
+      "ريحة غريبة",
+      "كريهة",
+      "تفوح"
+    ],
+    "smell_alcohol": [
+      "alcohol smell",
+      "smells like alcohol",
+      "ethanol smell",
+      "ريحة كحول",
+      "فايح بريحة كحول"
+    ],
+    "thickened": [
+      "thick",
+      "thickened",
+      "viscous",
+      "gooey",
+      "dense",
+      "gel-like",
+      "syrupy",
+      "ثقيل",
+      "لزج",
+      "سميك",
+      "قوامه غريب",
+      "هلامي",
+      "جل"
+    ],
+    "moist": ["moist", "wet", "damp", "sticky", "رطب", "مبلول", "نداوة", "لزج"],
+    "cracked": [
+      "cracked",
+      "chipped",
+      "broken",
+      "split",
+      "crumbly",
+      "مشقق",
+      "مكسور",
+      "مفتت",
+      "يتفتت"
+    ],
+    "fermented": [
+      "bubbly",
+      "bubbles",
+      "foamy",
+      "foam",
+      "fermented",
+      "مخمر",
+      "فقاعات",
+      "يفور",
+      "فوار",
+      "فيه رغوه",
+      "رغوة"
+    ],
+    "overheated": [
+      "overheated",
+      "too hot",
+      "heat",
+      "hot car",
+      "left in car",
+      "sunlight",
+      "high temperature",
+      "تعرض لحرارة",
+      "حرارة عالية",
+      "انحط في السيارة",
+      "شمس",
+      "صيف",
+      "مكان حار"
+    ],
+    "not_refrigerated": [
+      "out of fridge",
+      "outside the fridge",
+      "left out",
+      "room temperature for long",
+      "برا الثلاجة",
+      "خارج الثلاجة",
+      "تركته برا",
+      "بقى بالغرفة"
+    ],
+    "separated": [
+      "separated",
+      "split",
+      "oil separated",
+      "watery",
+      "curdled",
+      "منفصل",
+      "انفصل",
+      "صار طبقات",
+      "مفصول"
+    ],
+    "contaminated": [
+      "contaminated",
+      "dirty",
+      "unclean",
+      "touched tip",
+      "particles",
+      "ملوث",
+      "تلوث",
+      "وصخ",
+      "اتوسخ",
+      "لمست الفوهة"
+    ]
+  },
+  "normal": {
+    "insulin": {
+      "clear": [
+        "clear",
+        "transparent",
+        "colorless",
+        "شفاف",
+        "صافي",
+        "لا لون له",
+        "عديم اللون",
+        "سائل صاف"
+      ]
+    },
+    "antibiotic_syrup": {
+      "normal_smell": [
+        "normal smell",
+        "smells normal",
+        "رائحته طبيعية",
+        "طبيعي"
+      ],
+      "looks_normal": [
+        "looks normal",
+        "normal",
+        "طبيعي",
+        "شكله طبيعي",
+        "لونه طبيعي",
+        "صاف"
+      ]
+    },
+    "cough_syrup": {
+      "normal_smell": [
+        "normal smell",
+        "smells normal",
+        "رائحته طبيعية",
+        "طبيعي"
+      ],
+      "looks_normal": [
+        "looks normal",
+        "normal",
+        "طبيعي",
+        "شكله طبيعي",
+        "لونه طبيعي",
+        "صاف"
+      ]
+    },
+    "pain_relief_tablets": {
+      "dry_intact": [
+        "hard",
+        "dry",
+        "intact",
+        "solid",
+        "جاف",
+        "صلب",
+        "سليم",
+        "ما يتفتت"
+      ]
+    },
+    "generic_liquid": {
+      "normal_smell": [
+        "normal smell",
+        "smells normal",
+        "رائحته طبيعية",
+        "طبيعي"
+      ],
+      "looks_normal": [
+        "looks normal",
+        "normal",
+        "طبيعي",
+        "شكله طبيعي",
+        "لونه طبيعي",
+        "صاف"
+      ]
+    }
+  }
+}

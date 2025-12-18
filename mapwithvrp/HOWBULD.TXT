@@ -1,0 +1,18 @@
+cd /Users/moznali/Downloads/mapwithvrp # NAME OF PATH IN YOUR LAPTOP
+docker compose down
+docker compose build
+docker compose up
+
+
+تراي ما سويت رن orsm لان اريدي مسويته 
+# غيري TRYriyadh.pbf لملفك
+osrm-extract -p /opt/homebrew/opt/osrm-backend/share/osrm/profiles/car.lua TRYriyadh.pbf
+osrm-partition TRYriyadh.osrm
+osrm-customize TRYriyadh.osrm
+ هو هذا ، ف لو بتسوين له رن غيري copy في file docker ال cope 
+(بعد ما يسوي رن نسوي بناء على فلتر )
+COMMAND :
+flutter clean
+flutter pub get
+flutter run
+

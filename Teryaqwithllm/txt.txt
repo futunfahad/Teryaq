@@ -1,0 +1,695 @@
+import psycopg2
+import uuid
+
+def uuid4():
+    return str(uuid.uuid4())
+
+# ============================================================
+# CONNECT TO DATABASE
+# ============================================================
+conn = psycopg2.connect(
+    host="localhost",
+    database="med_delivery",
+    user="postgres",
+    password="mysecretpassword"
+)
+cur = conn.cursor()
+
+print("\n🔥 Seeding Dummy Data for Multi-Hospital Cold-Chain Demo…\n")
+
+# ============================================================
+# RESET TABLES (CLEAN SLATE)
+# ============================================================
+cur.execute("""
+TRUNCATE
+    notification,
+    delivery_event,
+    "Order",
+    report,
+    requests,
+    prescription,
+    patient,
+    driver,
+    hospital_medication,
+    gps,
+    temperature,
+    estimated_delivery_time,
+    estimated_stability_time,
+    dashboard,
+    staging_incoming_data,
+    production_table,
+    medication,
+    hospital
+CASCADE;
+""")
+
+print("✔ All related tables truncated (clean reset)\n")
+
+# ============================================================
+# 0) MEDICATIONS (CENTRAL COLD-CHAIN DATASET)
+# ============================================================
+
+# Two generic stability profiles + one insulin used in the demo order
+med_stable_id = uuid4()
+med_fragile_id = uuid4()
+med_insulin_demo_id = uuid4()
+
+# Stable cold-chain medication
+cur.execute("""
+INSERT INTO medication (
+    medication_id,
+    name,
+    description,
+    information_source,
+    exp_date,
+    max_time_exertion,
+    min_temp_range_excursion,
+    max_temp_range_excursion,
+    return_to_the_fridge,
+    max_time_safe_use,
+    additional_actions_detail,
+    risk_level
+) VALUES (
+    %s, %s, %s,
+    %s,
+    NOW() + interval '120 days',
+    interval '90 minutes',
+    %s, %s,
+    %s, %s,
+    %s,
+    %s
+)
+""", (
+    med_stable_id,
+    "Insulin Glargine U100 (Stable Profile)",
+    "Basal insulin with relatively tolerant temperature excursion profile.",
+    "Hospital stability guideline (internal pharmacy policy)",
+    2, 30,                     # 2–30°C
+    True, True,
+    "If excursion exceeds 90 minutes above allowed range, discard and re-dispense.",
+    "Low"
+))
+
+# Very sensitive biologic
+cur.execute("""
+INSERT INTO medication (
+    medication_id,
+    name,
+    description,
+    information_source,
+    exp_date,
+    max_time_exertion,
+    min_temp_range_excursion,
+    max_temp_range_excursion,
+    return_to_the_fridge,
+    max_time_safe_use,
+    additional_actions_detail,
+    risk_level
+) VALUES (
+    %s, %s, %s,
+    %s,
+    NOW() + interval '60 days',
+    interval '30 minutes',
+    %s, %s,
+    %s, %s,
+    %s,
+    %s
+)
+""", (
+    med_fragile_id,
+    "Monoclonal Antibody (High-Risk Profile)",
+    "Biologic product with very limited tolerance for room-temperature excursions.",
+    "Manufacturer stability datasheet",
+    2, 20,                     # 2–20°C
+    False, True,
+    "If kept outside fridge for more than 30 minutes, discard and notify prescriber.",
+    "High"
+))
+
+# Demo insulin used in the example order
+cur.execute("""
+INSERT INTO medication (
+    medication_id,
+    name,
+    description,
+    information_source,
+    exp_date,
+    max_time_exertion,
+    min_temp_range_excursion,
+    max_temp_range_excursion,
+    return_to_the_fridge,
+    max_time_safe_use,
+    additional_actions_detail,
+    risk_level
+) VALUES (
+    %s, %s, %s,
+    %s,
+    NOW() + interval '60 days',
+    interval '2 hours',
+    %s, %s,
+    %s, %s,
+    %s,
+    %s
+)
+""", (
+    med_insulin_demo_id,
+    "Insulin Aspart FlexPen (Patient Demo)",
+    "Fast-acting insulin pen used in the live demo route.",
+    "Teryaq cold-chain knowledge base",
+    2, 30,                     # 2–30°C
+    True, True,
+    "If out of cold chain for more than 2 hours, discard and arrange new shipment.",
+    "Medium"
+))
+
+print("✔ Medications inserted (stable, fragile, and demo insulin)\n")
+
+# ============================================================
+# 1) HOSPITALS
+# ============================================================
+
+# Fixed UUID for your main hospital (used all across the system)
+
+hospital_1 = uuid4()
+hospital_2 = uuid4()
+hospital_3 = uuid4()
+
+
+# ============================================================
+# 1) MAIN DEMO HOSPITAL (LOGIN-CRITICAL)
+# ============================================================
+
+my_hospital_id = "71cf492b-c9de-48a5-af3a-0035c1431919"
+
+cur.execute("""
+INSERT INTO hospital (
+    hospital_id,
+    firebase_uid,
+    national_id,
+    name,
+    address,
+    email,
+    phone_number,
+    lat,
+    lon,
+    status
+) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+""", (
+    my_hospital_id,
+    "2181241943_FIREBASE",      # ✅ tied to login
+    "2181241943",               # ✅ MUST start with 2
+    "King Fahad Medical City – Central Pharmacy",
+    "King Fahad Road, Riyadh",
+    "central.pharmacy@kfmc.sa",
+    "+966500000777",
+    24.6893,
+    46.6860,
+    "active"
+))
+
+
+# Additional demo hospitals in Riyadh
+hospitals = [
+    (
+        hospital_1,
+        "7000000001",
+        "Riyadh Central Hospital",
+        "Riyadh – City Center",
+        24.6890,
+        46.6880
+    ),
+    (
+        hospital_2,
+        "7000000002",
+        "North Riyadh Diabetes Center",
+        "Riyadh – Al Malqa",
+        24.7740,
+        46.7000
+    ),
+    (
+        hospital_3,
+        "7000000003",
+        "South Riyadh Oncology Clinic",
+        "Riyadh – Al Aziziyah",
+        24.6000,
+        46.7100
+    ),
+]
+
+for hid, nat, name, addr, lat, lon in hospitals:
+    cur.execute("""
+        INSERT INTO hospital (
+            hospital_id,
+            firebase_uid,
+            national_id,
+            name,
+            address,
+            email,
+            phone_number,
+            lat,
+            lon,
+            status
+        )
+        VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+    """, (
+        hid,
+        f"{nat}_FIREBASE",
+        nat,
+        name,
+        addr,
+        f"{nat}@hospital-demo.sa",
+        "+966500000000",
+        lat,
+        lon,
+        "active"
+    ))
+
+print("✔ Hospitals inserted (KFMC demo + 3 satellite centers)\n")
+
+# ============================================================
+# 2) HOSPITAL ↔ MEDICATION AVAILABILITY
+# ============================================================
+
+# Main hospital has all 3 medications
+cur.execute("""
+INSERT INTO hospital_medication (hospital_id, medication_id, availability)
+VALUES
+    (%s, %s, TRUE),
+    (%s, %s, TRUE),
+    (%s, %s, TRUE)
+""", (
+    my_hospital_id, med_stable_id,
+    my_hospital_id, med_fragile_id,
+    my_hospital_id, med_insulin_demo_id
+))
+
+# Other hospitals have the two generic profiles
+for hid in [hospital_1, hospital_2, hospital_3]:
+    cur.execute("""
+        INSERT INTO hospital_medication (hospital_id, medication_id, availability)
+        VALUES
+            (%s, %s, TRUE),
+            (%s, %s, TRUE)
+    """, (
+        hid, med_stable_id,
+        hid, med_fragile_id
+    ))
+
+print("✔ Hospital–Medication availability inserted\n")
+
+# ============================================================
+# 3) DRIVER (DEMO ROUTE DRIVER)
+# ============================================================
+
+my_driver_id = uuid4()
+
+cur.execute("""
+INSERT INTO driver (
+    driver_id,
+    firebase_uid,
+    national_id,
+    hospital_id,
+    name,
+    email,
+    phone_number,
+    address,
+    lat,
+    lon,
+    status
+) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+""", (
+    my_driver_id,
+    "DRV_KFMC_DEMO_001",
+    "1045678901",
+    my_hospital_id,
+    "Nasser Al-Qahtani",
+    "nasser.alqahtani@kfmc-demo.sa",
+    "+966500112233",
+    "Riyadh – KFMC Driver Pool",
+    24.6900,
+    46.6850,
+    "active"
+))
+
+print("✔ Demo driver inserted (Nasser Al-Qahtani)\n")
+
+# ============================================================
+# 4) PATIENT (DEMO HOME DELIVERY PATIENT)
+# ============================================================
+
+my_patient_id = uuid4()
+
+cur.execute("""
+INSERT INTO patient (
+    patient_id,
+    firebase_uid,
+    national_id,
+    hospital_id,
+    name,
+    address,
+    email,
+    phone_number,
+    gender,
+    birth_date,
+    lat,
+    lon,
+    preferred_delivery_type,
+    status
+) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+""", (
+    my_patient_id,
+    "PAT_KFMC_DEMO_001",
+    "1098765432",
+    my_hospital_id,
+    "Rahaf Al-Mutairi",
+    "Riyadh – Al Olaya (Apartment 12B)",
+    "rahaf.almutairi@patient-demo.sa",
+    "+966500998877",
+    "Female",
+    "1999-02-02",
+    24.7122,
+    46.6766,
+    "delivery",   # patient prefers home delivery
+    "active"
+))
+
+print("✔ Demo patient inserted (Rahaf Al-Mutairi)\n")
+
+# ============================================================
+# 5) DASHBOARD (LINKED TO TELEMETRY + ORDER)
+# ============================================================
+
+my_dash_id = uuid4()
+
+cur.execute("INSERT INTO dashboard (dashboard_id) VALUES (%s)", (my_dash_id,))
+print("✔ Demo dashboard inserted\n")
+
+# ============================================================
+# 6) PRESCRIPTION (INSULIN FOR THE DEMO PATIENT)
+# ============================================================
+
+my_prescription_id = uuid4()
+
+cur.execute("""
+INSERT INTO prescription (
+    prescription_id,
+    hospital_id,
+    medication_id,
+    patient_id,
+    expiration_date,
+    reorder_threshold,
+    instructions,
+    prescribing_doctor,
+    status
+) VALUES (
+    %s,%s,%s,%s,
+    NOW() + interval '20 days',
+    %s,
+    %s,
+    %s,
+    %s
+)
+""", (
+    my_prescription_id,
+    my_hospital_id,
+    med_insulin_demo_id,
+    my_patient_id,
+    2,  # refill limit
+    "Inject 10 units subcutaneously 15 minutes before dinner.",
+    "Dr. Ahmad Al-Shehri (Endocrinologist)",
+    "Active"
+))
+
+print("✔ Demo prescription inserted (insulin for Rahaf)\n")
+
+# ============================================================
+# 7) ORDER (LIVE DEMO DELIVERY ORDER)
+# ============================================================
+
+my_order_id = uuid4()
+cur.execute("""
+INSERT INTO "Order" (
+    order_id,
+    driver_id,
+    patient_id,
+    hospital_id,
+    prescription_id,
+    dashboard_id,
+    description,
+    notes,
+    priority_level,
+    order_type,          -- ✅ patient choice
+    ml_delivery_type,    -- ✅ system recommendation
+    otp,
+    status
+) VALUES (
+    %s,%s,%s,%s,%s,%s,
+    %s,%s,%s,%s,%s,%s,%s
+)
+""", (
+    my_order_id,
+    my_driver_id,
+    my_patient_id,
+    my_hospital_id,
+    my_prescription_id,
+    my_dash_id,
+    "Cold-chain insulin delivery to patient home.",
+    "Patient selected evening home delivery.",
+    "Normal",
+    "delivery",      # ✅ patient selected
+    "delivery",      # ✅ ML also recommends delivery
+    5678,
+    "ON_DELIVERY"
+))
+
+
+# ============================================================
+# 8) BASIC TELEMETRY FOR THE DASHBOARD
+# ============================================================
+
+# GPS samples along the route
+cur.execute("""
+INSERT INTO gps (gps_id, dashboard_id, latitude, longitude, recorded_at)
+VALUES
+    (%s, %s, 24.689300, 46.686000, NOW() - interval '10 minutes'),
+    (%s, %s, 24.700100, 46.690000, NOW() - interval '5 minutes'),
+    (%s, %s, 24.712200, 46.676600, NOW())
+""", (
+    uuid4(), my_dash_id,
+    uuid4(), my_dash_id,
+    uuid4(), my_dash_id
+))
+
+# Temperature samples
+cur.execute("""
+INSERT INTO temperature (temperature_id, dashboard_id, temp_value, recorded_at)
+VALUES
+    (%s, %s, '4.5 °C', NOW() - interval '10 minutes'),
+    (%s, %s, '5.0 °C', NOW() - interval '5 minutes'),
+    (%s, %s, '5.2 °C', NOW())
+""", (
+    uuid4(), my_dash_id,
+    uuid4(), my_dash_id,
+    uuid4(), my_dash_id
+))
+
+# ETA and stability time series
+cur.execute("""
+INSERT INTO estimated_delivery_time (estimated_delivery_id, dashboard_id, delay_time, recorded_at)
+VALUES
+    (%s, %s, interval '25 minutes', NOW() - interval '10 minutes'),
+    (%s, %s, interval '10 minutes', NOW())
+""", (
+    uuid4(), my_dash_id,
+    uuid4(), my_dash_id
+))
+
+cur.execute("""
+INSERT INTO estimated_stability_time (estimated_stability_id, dashboard_id, stability_time, recorded_at)
+VALUES
+    (%s, %s, interval '2 hours', NOW() - interval '10 minutes'),
+    (%s, %s, interval '1 hour 45 minutes', NOW())
+""", (
+    uuid4(), my_dash_id,
+    uuid4(), my_dash_id
+))
+
+print("✔ Telemetry inserted (GPS, temperature, ETA, stability)\n")
+
+# ============================================================
+# 9) DELIVERY EVENTS (NARRATIVE FOR PRESENTATION)
+# ============================================================
+
+event_start_id = uuid4()
+event_enroute_id = uuid4()
+
+# EVENT 1 – Driver starts from hospital
+cur.execute("""
+INSERT INTO delivery_event (
+    event_id,
+    order_id,
+    event_status,
+    event_message,
+    duration,
+    remaining_stability,
+    condition,
+    lat,
+    lon,
+    eta
+) VALUES (
+    %s, %s,
+    %s, %s,
+    interval '0 minutes',
+    interval '2 hours',
+    %s,
+    %s, %s,
+    NOW() + interval '25 minutes'
+)
+""", (
+    event_start_id,
+    my_order_id,
+    "Start",
+    "Driver departed from King Fahad Medical City with insulated box.",
+    "Normal",
+    24.689300,
+    46.686000,
+    # ETA in 25 minutes from now
+))
+
+# EVENT 2 – Driver en route, halfway
+cur.execute("""
+INSERT INTO delivery_event (
+    event_id,
+    order_id,
+    event_status,
+    event_message,
+    duration,
+    remaining_stability,
+    condition,
+    lat,
+    lon,
+    eta
+) VALUES (
+    %s, %s,
+    %s, %s,
+    interval '15 minutes',
+    interval '1 hour 45 minutes',
+    %s,
+    %s, %s,
+    NOW() + interval '10 minutes'
+)
+""", (
+    event_enroute_id,
+    my_order_id,
+    "En Route",
+    "Driver is halfway to patient location, temperature remains within safe range.",
+    "Normal",
+    24.700100,
+    46.690000,
+))
+
+print("✔ Delivery events inserted (Start + En Route)\n")
+
+
+
+#test
+
+hospital_id = my_hospital_id
+
+patient_id = uuid4()
+cur.execute("""
+INSERT INTO patient (
+    patient_id, firebase_uid, national_id, hospital_id,
+    name, address, phone_number, gender, birth_date, lat, lon
+) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+""", (
+    patient_id,
+    "PAT_KFMC_001",
+    "10987654391",
+    hospital_id,
+    "Rahaf Al-Mutairi",
+    "Riyadh – Al Olaya",
+    "+966500998877",
+    "Female",
+    "1999-02-02",
+    24.7122, 46.6766
+))
+driver_id = uuid4()
+cur.execute("""
+INSERT INTO driver (
+    driver_id, firebase_uid, national_id, hospital_id,
+    name, phone_number, lat, lon
+) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)
+""", (
+    driver_id,
+    "DRV_KFMC_001",
+    "10456998901",
+    hospital_id,
+    "Nasser Al-Qahtani",
+    "+966500112233",
+    24.6893, 46.6860
+))
+prescription_id = uuid4()
+cur.execute("""
+INSERT INTO prescription (
+    prescription_id, hospital_id, medication_id, patient_id,
+    expiration_date, reorder_threshold, instructions, prescribing_doctor
+) VALUES (%s,%s,%s,%s,
+          NOW() + interval '20 days', 2,
+          %s, %s)
+""", (
+    prescription_id,
+    hospital_id,
+    med_insulin_demo_id,
+    patient_id,
+    "Inject 10 units daily",
+    "Dr. Ahmad Al-Shehri"
+))
+# ============================================================
+# CREATE DASHBOARD (REQUIRED FOR ORDER)
+# ============================================================
+
+dashboard_id = uuid4()
+
+cur.execute("""
+INSERT INTO dashboard (dashboard_id)
+VALUES (%s)
+""", (dashboard_id,))
+
+
+order_id = uuid4()
+cur.execute("""
+INSERT INTO "Order" (
+    order_id, hospital_id, patient_id, driver_id,
+    prescription_id, dashboard_id,
+    order_type, ml_delivery_type,
+    priority_level, status
+) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+""", (
+    order_id,
+    hospital_id,
+    patient_id,
+    driver_id,
+    prescription_id,
+    dashboard_id,
+    "delivery",        # patient choice
+    "delivery",        # ML recommendation
+    "Normal",
+    "ON_DELIVERY"
+))
+
+# ============================================================
+# COMMIT & CLOSE
+# ============================================================
+
+conn.commit()
+cur.close()
+conn.close()
+
+print("\n🎉 DONE! Demo data for multi-hospital cold-chain scenario inserted successfully!\n")
+print("➡️ Demo Hospital (KFMC)   :", my_hospital_id)
+print("➡️ Demo Patient (Rahaf)   :", my_patient_id)
+print("➡️ Demo Driver (Nasser)   :", my_driver_id)
+print("➡️ Demo Order             :", my_order_id)
+print("➡️ Delivery Events        :", event_start_id, event_enroute_id)
+print("\nReady for presentation! 🚀")
