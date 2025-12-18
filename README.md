@@ -4,7 +4,8 @@ Teryaq is a multi-role healthcare logistics system for **temperature-sensitive m
 
 ---
 
-## Demo
+## Demo 
+The demo link provides additional details about the project and includes a recorded video demonstrating the live application workflow, showcasing the actual user interface and real usage of each screen in action.
 - Demo link: https://www.canva.com/design/DAG74NkUXW8/Ht80OQyIMl1U-HDLrD5nAw/view?utm_content=DAG74NkUXW8&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h0cafe79df0#43
 
 ---
@@ -99,49 +100,37 @@ Teryaq is a multi-role healthcare logistics system for **temperature-sensitive m
 4. Rule-based storage vs safety classification
 5. Controlled LLM rephrasing (rephrase only; no new facts)
 
----
-
-## How ETA is produced in the system
-ETA can be obtained through **two paths**, depending on the screen:
-
-- **Driver live dashboard (FlutterMap):** ETA is computed **client-side** by calling OSRM through the gateway:
-  - Request: `GET {GATEWAY}/route/v1/driving/{fromLon},{fromLat};{toLon},{toLat}`
-  - Source field: `routes[0].duration` (seconds)
-  - The app converts it into minutes/hours for display.
-
-- **Backend dashboard card (FastAPI):** ETA is served from the database as the latest recorded value:
-  - Table: `estimated_delivery_time`
-  - Column used in code: `delay_time`
-  - Selected as: latest row by `recorded_at DESC`
-  - Formatted using `format_interval_hm(...)`.
 
 ---
+## Running the System (Development)
 
-## Running the system (development)
-> This project uses Firebase Authentication and protected API routes. **Firebase tokens must be configured** before the apps can authenticate successfully.
+- Start all backend services using **Docker / Docker Compose**.
+- Backend services are exposed on a **local network IP** (e.g. `192.168.x.x`), not `localhost`.
 
-### Firebase token setup (required)
-1. Create a Firebase project and enable Email/Password authentication.
-2. Add your Firebase Admin service account key to the backend environment (or container), and initialize Firebase Admin in the backend.
-3. Ensure the mobile apps are configured with Firebase (`google-services.json` for Android) and are pointing to the correct Firebase project.
-4. Driver/Patient/Hospital login will generate an **ID token**, which must be sent to the backend in:
-   - `Authorization: Bearer <FIREBASE_ID_TOKEN>`
+### Required configuration
+- Update all backend IPs and ports in the **Flutter frontend** to match the Docker backend, including:
+  - FastAPI API base URL
+  - TileServer-GL / OSRM gateway URL
+- If the backend IP changes, the frontend constants and request headers must be updated.
 
-If tokens are not configured, secured endpoints (e.g., `/driver/me`) will return `401 Unauthorized`.
+### Firebase Authentication (required)
+1. Create a Firebase project and enable **Email/Password Authentication**.
+2. Add the Firebase **Admin SDK service account key** to the backend environment.
+3. Configure Firebase in the Flutter app (`google-services.json` for Android).
+4. All secured requests must include:
 
----
+Authorization: Bearer <FIREBASE_ID_TOKEN>
 
-## Routing Data Setup (OSRM)
 
-Due to size limitations, OSRM routing data is not stored in this repository.
+### Routing Data Setup (OSRM)
+Routing data is not stored in this repository.
 
-### Generate routing data locally
 1. Download Saudi Arabia OSM data:  
-   https://download.geofabrik.de/asia/saudi-arabia.html
+https://download.geofabrik.de/asia/saudi-arabia.html
+2. Place the file in:
 
-2. Place the file in:  
-   `mapwithvrp/flutter_application_1/osrm-data/`
+mapwithvrp/flutter_application_1/osrm-data/
 
-3. Run:
-   ```bash
-   bash build_osrm.sh
+3. Build routing data:
+```bash
+bash build_osrm.sh
