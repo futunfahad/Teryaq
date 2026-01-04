@@ -1,4 +1,4 @@
-# Teryaq (TRIAC) | ترياق
+# Teryaq | ترياق
 Smart cold-chain medication delivery & monitoring system (IoT + Routing + Multi-role Apps + ML)
 
 ## Project Overview
